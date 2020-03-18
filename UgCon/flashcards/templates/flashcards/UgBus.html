@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block sidepanel %}
+<div class='customeractivity'>
+
+<p>FOLLOW THE STATE OF BUSINESS IN UGANDA THROUGH EYES OF INSIDERS</p>
+<hr>
+{% if request.user.is_superuser %}
+<form method='POST'>
+{% csrf_token %}
+{{ form }}
+<input class='button3' type='submit' value='POST'>
+</form>
+<br><br>
+{% endif %}
+
+
+<div>
+		{% if my %}
+            {% for action in my %}
+            <div class='article'>
+            <p style='color:maroon;'>{{action.author}} posted about {{action.about}} on {{ action.date_as_is }} </p>
+            <hr>
+            <h3 style='color:blue;' > {{action.title}}</h3>
+            <p align='justify'> {{action.notes}}</p>
+            <button class='button'><a href= {{action.site}} >Follow Article</a></button>
+            </div>
+            <br>
+            {% endfor %}
+        {% else %}
+            <h2> No Articles available </h2>
+        {% endif %}
+    <div class="pagination">
+    <span class="step-links">
+        {% if my.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ my.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ my.number }} of {{ my.paginator.num_pages }}.
+        </span>
+
+        {% if my.has_next %}
+            <a href="?page={{ my.next_page_number }}">next</a>
+            <a href="?page={{ my.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+{% endblock %}

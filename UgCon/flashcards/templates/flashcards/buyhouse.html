@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UgCon</title>
+		<link rel='stylesheet' href={% static 'css/style1.css' %} />
+	</head>
+	<body>
+    <div class='sidepanel'>
+    <p>BUY HOUSE</p>
+    <hr>
+    <p>Fill in the form to buy remotely</p>
+    <form method='POST'>
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Location:</td><td><input type='text' placeholder='eg. (Kalisizo, Kyotera)' name='org'required></td>
+        </tr>
+        <tr>
+            <td>Structure:</td><td><SELECT NAME="type"> <OPTION VALUE= "Bungalow">Bungalow</OPTION> <OPTION SELECTED VALUE="2 levels"> 2 Levels</OPTION><OPTION VALUE="3 Levels">3 Levels </OPTION> <OPTION VALUE="Other">Others (Specify in Description) </OPTION> </SELECT></td>
+        </tr>
+        <tr>
+            <td align=top>Description:</td><td><textarea name='notes' placeholder='If you selected anywhere others please specify here' cols=50 rows=10></textarea></td>
+        </tr>
+        <tr>
+            <td><button class='button2'>Submit</button></td>
+        </tr>
+    </table>
+    </form>
+    <h4>BRIEFING</h4>
+    <p>This module enables you to buy a house remotely. We shall connect you to our agent who will help you to buy your house even when you are away. The pricing and the planning will all be done between you and the agent. However, we discourage you from giving the money for the activity to the agent. All paymenst should be made through a link that we shall provide to you. This is for your own safety and security. Even though, our agents have been proved trustworthy, they are human and if not monitored they could do the unexpected.</p>
+    <div>
+    </body>
+</html>

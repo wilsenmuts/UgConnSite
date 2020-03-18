@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block sidepanel %}
+<div class='customeractivity'>
+<p>CREATE ACTIVITY</p>
+<hr>
+    {% if reply %}
+    <h2 style='background-color:aliceblue; color:darkblue; padding:10px; text-align:center; border-radius:5px;'>&#10003; {{reply}}</h2>
+    {% else %}
+    {% endif %}
+<div class='row'>
+    <div class='card2'>
+    <a href= {% url 'flashcards:investmoney' %}>
+        {% load static %}<img src="{% static "images/invest.jpg" %}" width=100% height= 200 alt="My image">
+        <div class="container">
+            <h4 align=center  style='color:maroon;'>Create Investment</h4>
+            <hr>
+            <p  style='color:black;'>For those who want to startup an Investment or anything related</p>
+        </div>
+    </a>
+    </div>
+    <div class='card2'>
+    <a href= {% url 'flashcards:donatemoney' %}>
+        {% load static %}<img src="{% static "images/donate.jpg" %}" width=100% height= 200 alt="My image">
+        <div class="container">
+            <h4 align=center style='color:maroon;'>Donate Money</h4>
+            <hr>
+            <p style='color:black;'>For those who who want to donate money to organisation or a cause</p>
+        </div>
+    </a>
+    </div>
+    <div class='card2'>
+    <a href= {% url 'flashcards:buyequipment' %}>
+        {% load static %}<img src="{% static "images/black.jpg" %}" width=100% height= 200 alt="My image">
+        <div class="container">
+            <h4 align=center style='color:maroon;'>Buy Equipment</h4>
+            <hr>
+            <p style='color:black;'>For those who want to buy equipment or other items remotely.</p>
+        </div>
+    </a>
+    </div>
+    <div class='card2'>
+    <a href= {% url 'flashcards:buildhouse1' %}>
+        {% load static %}<img src="{% static "images/buildhouse.jpg" %}" width=100% height= 200 alt="My image">
+        <div class="container">
+            <h4 align=center style='color:maroon;'>Build House</h4>
+            <hr>
+            <p style='color:black;'>For those who want to build a house under an agent's supervision</p>
+        </div>
+    </a>
+    </div>
+    <div class='card2'>
+    <a href= {% url 'flashcards:buyhouse' %}>
+        {% load static %}<img src="{% static "images/byhouse.jpg" %}" width=100% height= 200 alt="My image">
+        <div class="container">
+            <h4 align=center style='color:maroon;'>Buy House</h4>
+            <hr>
+            <p style='color:black;'>For those who want to buy a house in Uganda with the help of an agent</p>
+        </div>
+    </a>
+    </div>
+    <div class='card2'>
+    <a href= {% url 'flashcards:buyland' %}>
+        {% load static %}<img src="{% static "images/bykand.jpg" %}" width=100% height= 200 alt="My image">
+        <div class="container">
+            <h4 align=center style='color:maroon;'>Buy Land</h4>
+            <hr>
+            <p style='color:black;'>For those who want to buy land in Uganda with the help of our agents</p>
+        </div>
+    </a>
+    </div>
+    <div class='card2'>
+    <a href= {% url 'flashcards:payment' %}>
+        {% load static %}<img src="{% static "images/paytry.jpg" %}" width=100% height= 200 alt="My image">
+        <div class="container">
+            <h4 align=center style='color:maroon;'>Payments</h4>
+            <hr>
+            <p style='color:black;'>For those who want to make payments while outside the country</p>
+        </div>
+    </a>
+    </div>
+    <div class='card2'>
+    <a href= {% url 'flashcards:others' %}>
+        {% load static %}<img src="{% static "images/management.jpg" %}" width=100% height= 200 alt="My image">
+        <div class="container">
+            <h4 align=center style='color:maroon;'>Other Activity</h4>
+            <hr>
+            <p style='color:black;'>For those who want to do anyother activity remotely with the help of Ugcon</p>
+        </div>
+    </a>
+    </div>
+    <div class='card2'>
+    <a href= {% url 'flashcards:siteservices' %}>
+        {% load static %}<img src="{% static "images/service.jpg" %}" width=100% height= 200 alt="My image">
+        <div class="container">
+            <h4 align=center style='color:black;'>Check Site Services</h4>
+            <hr>
+            <p style='color:black;'>For those who want to check out the services provided by the site</p>
+        </div>
+    <a>
+    </div>
+</div>
+</div>
+
+{% endblock %}

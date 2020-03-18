@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block sidepanel %}
+
+	<div class='sidepanel'>
+		<p>Welcome to UgCon. Please, login to get the full previledges of being a member of UgCon.</p>
+		<form method='POST'>
+			{% csrf_token %}
+			{{ form }}
+			<br><br>
+			<input type='submit' value='Login'>
+		</form>
+	</div>
+
+{% endblock %}

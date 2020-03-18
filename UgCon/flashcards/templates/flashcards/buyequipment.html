@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UgCon</title>
+		<link rel='stylesheet' href={% static 'css/style1.css' %} />
+	</head>
+	<body>
+    <div class='sidepanel'>
+    <p>BUY EQUIPMENT</p>
+    <hr>
+    <p>Fill in the form to buy equipment</p>
+    <form method='POST'>
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Name of item:</td><td><input type='text' placeholder='Name of item ' name='item'required></td>
+        </tr>
+        <tr>
+            <td>Quantity:</td><td><input type='text' placeholder='eg (30 metallic doors)' name='quantity'required></td>
+        </tr>
+        <tr>
+            <td>Quality:</td><td><input type='text' placeholder=' eg (All new and well furnished)' name='quality'></td>
+        </tr>
+        <tr>
+            <td>Target Person:</td><td><input type='text' placeholder='can be person or business' name='target_p'required></td>
+        </tr>
+        <tr>
+            <td>Target Location:</td><td><input type='text' name='target_l'required></td>
+        </tr>
+        <tr>
+            <td>Target Contact:</td><td><input type='text' name='contact'required></td>
+        </tr>
+        <tr>
+            <td align=top>Notes:</td><td><textarea cols=50 rows=10 name='notes'></textarea></td>
+        </tr>
+        <tr>
+            <td><button class='button2'>Submit</button></td>
+        </tr>
+    </table>
+    <input type="hidden" name="next" value="{{ request.path }}">
+    </form>
+    <h4>BRIEFING</h4>
+    <p>One can order a set of equipment to be brought to a specific place or person. One should note that the transport-fare is to be charged on him and UgConn will withold a commission of atleast 5% to 10% basing on the equipment that is being shipped to the person.</p>
+    <div>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UgCon</title>
+		<link rel='stylesheet' href={% static 'css/style1.css' %} />
+	</head>
+	<body>
+    <div class='sidepanel'>
+    <p>CREATE INVESTMENT</p>
+    <hr>
+    <p>Fill in the form to create investment activity</p>
+    <form method='POST'>
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Title:</td><td><input type='text' name='title'required></td>
+        </tr>
+        <tr>
+            <td>Activity:</td><td><SELECT NAME="activity"> <OPTION VALUE= "Agriculture">Agriculture </OPTION> <OPTION SELECTED VALUE="Trade/service"> Trade/service </OPTION><OPTION VALUE="Manufacturing">Sleeping </OPTION> <OPTION VALUE="Other">Others </OPTION> </SELECT></td>
+        </tr>
+        <tr>
+            <td align=top>Notes:</td><td><textarea cols=50 name='notes' rows=10></textarea></td>
+        </tr>
+        <tr>
+            <td><button class='button2'>Register</button></td>
+        </tr>
+    </table>
+    </form>
+    <h4>BRIEFING</h4>
+    <p>Ugcon has got its set of agents who are experts in the various fields of business. When you fill in the above information, we receive it at our control center. From there we, we can assign you the best agent to start up your investment venture. As a way of sustaining this service, we charge a small fee per step. However, the initial steps are free and all the money to be used will be well documented for you. UgCon receives the money to start the venture through a link that will be provided for you the moment you are assigned an agent.</p>
+    <div>
+    </body>
+</html>

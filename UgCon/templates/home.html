@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block sidepanel %}
+
+	<div class='sidepanel'>
+		<p>Welcome to UgCon. Please, login to get the full previledges of being a member of UgCon.</p>
+		<form method='POST'>
+			{% csrf_token %}
+			<p class='pageheader1'>Fill in the login form </p>
+			<table>
+				<tr>
+					<th>Username:</th><th><input type='text' placeholder='Your Username' name='uname'></th>
+				</tr>
+				<tr>
+					<th>Password:</th><th><input type='Password' placeholder='Your Password' name='pword'></th>
+				</tr>
+				<tr>
+					<th><input class='button' type='submit' value='Login'></th><th><button class ='button'><a href="{% url 'register'%}" >Register</a></button></th>
+				</tr>
+			<table>
+		</form><br>
+		<button class ='button'><a href="{% url 'logout'%}" >logout</a></button>
+	</div>
+
+{% endblock %}

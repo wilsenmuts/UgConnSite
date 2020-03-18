@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UgCon</title>
+		<link rel='stylesheet' href={% static 'css/style1.css' %} />
+	</head>
+	<body>
+    <div class='sidepanel'>
+    <p>BUY LAND</p>
+    <hr>
+    <p>Fill in the form to buy remotely</p>
+    <form method='POST'>
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Location and size:</td><td><input type='text' placeholder='eg. Kakuuto(50 Acres)' name='org'required></td>
+        </tr>
+        <tr>
+            <td>Land for:</td><td><SELECT NAME="type"> <OPTION VALUE= "Farming">Farming</OPTION> <OPTION SELECTED VALUE="Building"> Building </OPTION><OPTION VALUE="Recreation">Recreation </OPTION><OPTION VALUE="Animal Keeping">Animal Keeping </OPTION><OPTION VALUE="Family Land">Family Land</OPTION> <OPTION VALUE="Other">Others (Specify in Description) </OPTION> </SELECT></td>
+        </tr>
+        <tr>
+            <td align=top>Description:</td><td><textarea name='notes' placeholder='If you selected anywhere others please specify here' cols=50 rows=10></textarea></td>
+        </tr>
+        <tr>
+            <td><button class='button2'>Submit</button></td>
+        </tr>
+    </table>
+    </form>
+    <h4>BRIEFING</h4>
+    <p>This module enables you to buy a land remotely. We shall connect you to our agent who will help you to buy the land according to the specified information provided. The pricing and the planning will all be done between you and the agent. However, we discourage you from giving the money for the activity to the agent. All paymenst should be made through a link that we shall provide to you. This is for your own safety and security.</p>
+    <div>
+    </body>
+</html>

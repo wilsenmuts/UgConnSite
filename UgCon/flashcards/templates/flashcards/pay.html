@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UgCon</title>
+		<link rel='stylesheet' href={% static 'css/style1.css' %} />
+	</head>
+	<body>
+    <div class='sidepanel'>
+    <p>MAKE PAYMENTS</p>
+    <hr>
+    <p>Fill in the form to make payments</p>
+    <form method='POST'>
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Type of payment:</td><td><SELECT NAME="type"> <OPTION VALUE= "Pay Bills">Bills</OPTION> <OPTION SELECTED VALUE="Pay Salary"> Salary</OPTION><OPTION VALUE="Other">Others (Specify in Description) </OPTION> </SELECT></td>
+        </tr>
+        <tr>
+            <td>Amount:</td><td><input type='text' placeholder='eg. (Ugsh. 1000,000)' name='amount'required></td>
+        </tr>
+        <tr>
+            <td>Target Person/Organisation:</td><td><input type='text' name='receiver'required></td>
+        </tr>
+        <tr>
+            <td>Payment Plan:</td><td><input type='file' name='payplan'> For those who have a payment plan (opional)</td>
+        </tr>
+        <tr>
+            <td align=top>Description:</td><td><textarea name='notes' placeholder='If you selected anywhere others please specify here' cols=50 rows=10></textarea></td>
+        </tr>
+        <tr>
+            <td><button class='button2'>Submit</button></td>
+        </tr>
+    </table>
+    </form>
+    <h4>BRIEFING</h4>
+    <p>This module enables you to buy a pay bills and other payments remotely in case one lacks a means in which to do so. UgConn charges a commission on the money that you wish to pay.</p>
+    <div>
+    </body>
+</html>

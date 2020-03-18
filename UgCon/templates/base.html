@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UgCon</title>
+		 <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+		<link rel='stylesheet' href={% static 'css/style1.css' %} />
+	</head>
+	<body>
+	<p class='pageheader'>UgCon</p>
+	<hr>
+	<p class='pageheader1'>Welcome to the official website of UgCon</p>
+	<div class='column'>
+		<p>My Dashboard</p><hr>
+		<p><a href={% url 'flashcards:myactivity'%}>My activity</a></p>
+		<p><a href="{% url 'flashcards:grievances'%}">My Grievances</p>
+		<p><a href={% url 'flashcards:contactugc'%}>Contact UgConn</a></p>
+		<p><a href={% url 'flashcards:contactdev'%}>Contact Developer</a></p>
+		<a href="{% url 'flashcards:apps' %}">Download Apps</a>
+		<p>Follow us on</p>
+		<table>
+		<tr>
+		<th>Facebook<br/>{% load static %}<img src="{% static "images/facebook.jpg" %}" width=50 height= 50 alt="My image"></th>
+		<th>Instagram<br/>{% load static %}<img src="{% static "images/insragram.jpg" %}" width=50 height= 50 alt="My image"></th>
+		<th>Twitter<br/>{% load static %}<img src="{% static "images/twitter.png" %}" width=50 height= 50 alt="My image"></th>
+		</tr>
+		</table>
+
+	</div>
+	<div>
+	<div>
+		<nav>
+			<a href="{% url 'home'%}">Account manager</a> |
+			<a href="{% url 'flashcards:activity' %}">Create Activity</a> |
+			<a href="{% url 'flashcards:ugbus' %}">UgBusiness</a> |
+			<a href="{% url 'flashcards:connect' %}">Connect</a> |
+			<a href="{% url 'flashcards:home'%}">About UgCon</a>
+			{% if request.user.is_superuser %}
+				<a href= {% url 'admin:index'  %} > | Superuser detected</a>
+
+			{% endif %}
+		</nav>
+	</div>
+    {% block sidepanel %}
+    {% endblock %}
+	</div>
+	{% block scriptj %}
+	{% endblock %}
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block  sidepanel%}
+	<div class='sidepanel'>
+		{% if operation %}
+            <ul>
+                {% for action in operation %}
+                <li> {{action}} </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p> No Decks found! Contact the Admin </p>
+        {% endif %}
+	</div>
+{% endblock %}

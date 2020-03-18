@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UgCon</title>
+		<link rel='stylesheet' href={% static 'css/style1.css' %} />
+	</head>
+	<body>
+    <div class='sidepanel'>
+    <p>DONATE MONEY</p>
+    <hr>
+    <p>Fill in the form to donate money</p>
+    <form method='POST'>
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Organisation/Cause:</td><td><input type='text' placeholder='Name of organisation or cause (e.g Refugees)' name='org'required></td>
+        </tr>
+        <tr>
+            <td>Type:</td><td><SELECT NAME="type"> <OPTION VALUE= "Phillanthropy">Phillanthropy </OPTION> <OPTION SELECTED VALUE="Research"> Research</OPTION><OPTION VALUE="Education">Education </OPTION> <OPTION VALUE="Medical">Medical </OPTION><OPTION VALUE="Opharnage">Orphanage</OPTION> <OPTION VALUE="Other">Others </OPTION> </SELECT></td>
+        </tr>
+        <tr>
+            <td>Target Location:</td><td><input type='text' name='reside'required></td>
+        </tr>
+        <tr>
+            <td>Target Contact:</td><td><input type='text' name='contact'required></td>
+        </tr>
+        <tr>
+            <td align=top>Notes:</td><td><textarea cols=50 rows=10></textarea></td>
+        </tr>
+        <tr>
+            <td><button class='button2'>Submit</button></td>
+        </tr>
+    </table>
+    </form>
+    <h4>BRIEFING</h4>
+    <p>Ugcon has two options for its module. The first one is 'organisation'. This one specifies an organisation where one wants to donate the money. While the second one is 'cause'; where one chooses a specific cause to donate to. For the cause, UgCon creates different pools of money for donations and provides the money to organisations working on that cause or directly to the people under that cause; this is after two months of the starting of the pool. UgCon detects the option chosen by virtue of what you fill in, in the Organisation/Cause field. UgConn also welcomes funding towards the creation of an organisation to deal with this module so as to successfully take it off the company's dealings. To fund this, fill in 'UgConn Charity Fund'.</p>
+    <div>
+    </body>
+</html>
