@@ -3,32 +3,34 @@
 <html>
 	<head>
 		<title>UgCon</title>
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel='stylesheet' href={% static 'css/bootstrap.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/all.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/styler.css' %} />
 		<link rel='stylesheet' href={% static 'css/style1.css' %} />
 	</head>
-	<body>
-    <div class='sidepanel'>
-    <p>CREATE INVESTMENT</p>
+	<body class='bg-mg2'>
+     <div align=center>
+      <br>
+    <div class='bg-greysan form-out-max padding rounded' align=center>
+    <p class="text-center text-light h3">CREATE INVESTMENT</p>
     <hr>
-    <p>Fill in the form to create investment activity</p>
-    <form method='POST'>
+    <form method='POST' class="form-max rounded padding" >
     {% csrf_token %}
-    <table>
-        <tr>
-            <td>Title:</td><td><input type='text' name='title'required></td>
-        </tr>
-        <tr>
-            <td>Activity:</td><td><SELECT NAME="activity"> <OPTION VALUE= "Agriculture">Agriculture </OPTION> <OPTION SELECTED VALUE="Trade/service"> Trade/service </OPTION><OPTION VALUE="Manufacturing">Sleeping </OPTION> <OPTION VALUE="Other">Others </OPTION> </SELECT></td>
-        </tr>
-        <tr>
-            <td align=top>Notes:</td><td><textarea cols=50 name='notes' rows=10></textarea></td>
-        </tr>
-        <tr>
-            <td><button class='button2'>Register</button></td>
-        </tr>
-    </table>
+            <label class="text-light">Investment Name:</label>
+            <input class='form-control' type='text' name='title' placeholder='give your investment a name' required>
+            <label class="text-light">Activity:</label>
+            <SELECT class="form-control" NAME="activity"> <OPTION VALUE= "Agriculture">Agriculture </OPTION> <OPTION SELECTED VALUE="Trade/service"> Trade/service </OPTION><OPTION VALUE="Manufacturing">Technology </OPTION> <OPTION VALUE="Other">Others </OPTION> </SELECT>
+            <label class="text-light" align=top>Notes:</label>
+            <textarea class="form-control" cols=50 name='notes' rows=5></textarea><br>
+            <button class='btn bg-brownish'>Create Activity <i class="fa fa-plus" aria-hidden="true"></i></button>
     </form>
-    <h4>BRIEFING</h4>
-    <p>Ugcon has got its set of agents who are experts in the various fields of business. When you fill in the above information, we receive it at our control center. From there we, we can assign you the best agent to start up your investment venture. As a way of sustaining this service, we charge a small fee per step. However, the initial steps are free and all the money to be used will be well documented for you. UgCon receives the money to start the venture through a link that will be provided for you the moment you are assigned an agent.</p>
-    <div>
+    <br>
+    <h4 class="text-center" >BRIEFING</h4>
+    <p class='text-justify'>Ugcon has got its set of agents who are experts in the various fields of business. When you fill in the above information, we receive it at our control center. From there we, we can assign you the best agent to start up your investment venture. As a way of sustaining this service, we charge a small fee per step. However, the initial steps are free and all the money to be used will be well documented for you. UgCon receives the money to start the venture through a link that will be provided for you the moment you are assigned an agent. Please, avoid giving money to any of our agents directly.</p>
+    </div>
+    </div>
     </body>
 </html>

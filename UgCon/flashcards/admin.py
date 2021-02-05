@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Deck, Card, buildhouse, buyhouse, investmoney, buyland, donatemoney, feesandbills, buyitem, others, grieve, article
+from .models import Deck, Card, buildhouse, buyhouse, investmoney, buyland, donatemoney, feesandbills, buyitem, others, grieve, article, about,service
 
 def activate(modeladmin, request, queryset):
     queryset.update(is_active=True)
@@ -24,6 +24,7 @@ class grieveAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Deck)
+admin.site.register(about)
 admin.site.register(Card)
 admin.site.register(buildhouse, buildhouseAdmin)
 admin.site.register(buyhouse)
@@ -31,6 +32,7 @@ admin.site.register(investmoney)
 admin.site.register(buyland)
 admin.site.register(donatemoney)
 admin.site.register(feesandbills)
+admin.site.register(service)
 admin.site.register(buyitem)
 admin.site.register(others)
 admin.site.register(grieve)

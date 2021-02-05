@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.conf.urls import url, include
 from . import views
-
+from django .urls import path
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.login, name= 'login'),
@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^siteservices/start', views.siteservices, name ='siteservices'),
     url(r'downloadable/file/apk', views.apk_download, name ='apk_download'),
     #url(r'article/edit/(?P<article_id>[\d]+)', views.editdeck, name='editdeck'),
+    path('search/<str:src_id>', views.sought, name='sought')
 ]

@@ -3,32 +3,34 @@
 <html>
 	<head>
 		<title>UgCon</title>
+		<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel='stylesheet' href={% static 'css/bootstrap.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/all.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/styler.css' %} />
 		<link rel='stylesheet' href={% static 'css/style1.css' %} />
 	</head>
-	<body>
-    <div class='sidepanel'>
-    <p>BUY LAND</p>
+	<body class='bg-mg2'>
+    <div class='container' align='center'>
+    <br>
+    <div class="bg-greysan padding rounded form-out-max" align=center>
+    <h3 class="text-center text-light bg-greysan">BUY LAND</h3>
     <hr>
-    <p>Fill in the form to buy remotely</p>
-    <form method='POST'>
+    <form method='POST' class="form-max padding rounded">
     {% csrf_token %}
-    <table>
-        <tr>
-            <td>Location and size:</td><td><input type='text' placeholder='eg. Kakuuto(50 Acres)' name='org'required></td>
-        </tr>
-        <tr>
-            <td>Land for:</td><td><SELECT NAME="type"> <OPTION VALUE= "Farming">Farming</OPTION> <OPTION SELECTED VALUE="Building"> Building </OPTION><OPTION VALUE="Recreation">Recreation </OPTION><OPTION VALUE="Animal Keeping">Animal Keeping </OPTION><OPTION VALUE="Family Land">Family Land</OPTION> <OPTION VALUE="Other">Others (Specify in Description) </OPTION> </SELECT></td>
-        </tr>
-        <tr>
-            <td align=top>Description:</td><td><textarea name='notes' placeholder='If you selected anywhere others please specify here' cols=50 rows=10></textarea></td>
-        </tr>
-        <tr>
-            <td><button class='button2'>Submit</button></td>
-        </tr>
-    </table>
+            <label class="text-light">Location and size:</label>
+            <input class='form-control' type='text' placeholder='eg. Kakuuto(50 Acres)' name='org'required>
+            <label class="text-light">Land for:</label>
+            <SELECT class="form-control" NAME="type"> <OPTION VALUE= "Farming">Farming</OPTION> <OPTION SELECTED VALUE="Building"> Building </OPTION><OPTION VALUE="Recreation">Recreation </OPTION><OPTION VALUE="Animal Keeping">Animal Keeping </OPTION><OPTION VALUE="Family Land">Family Land</OPTION> <OPTION VALUE="Other">Others (Specify in Description) </OPTION> </SELECT>
+            <label class="text-light" align=top>Description:</label>
+            <textarea class="form-control" name='notes' placeholder='If you selected anywhere others please specify here' cols=50 rows=5></textarea><br>
+    <button class='btn bg-brownish'>Create Activity <i class="fa fa-plus" aria-hidden="true"></i></button>
     </form>
-    <h4>BRIEFING</h4>
-    <p>This module enables you to buy a land remotely. We shall connect you to our agent who will help you to buy the land according to the specified information provided. The pricing and the planning will all be done between you and the agent. However, we discourage you from giving the money for the activity to the agent. All paymenst should be made through a link that we shall provide to you. This is for your own safety and security.</p>
-    <div>
+    <br>
+    <h4 class="text-center">BRIEFING</h4>
+    <p>This module enables you to buy a land remotely. We shall connect you to our agent who will help you to buy the land according to the specified information provided. The pricing and the planning will all be done between you and the agent. However, we discourage you from giving the money for the activity to the agent. All payments should be made through a link that we shall provide to you. This is for your own safety and security.</p>
+    </div>
+    </div>
     </body>
 </html>

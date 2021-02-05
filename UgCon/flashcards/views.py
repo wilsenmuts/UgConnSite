@@ -255,8 +255,8 @@ def home(request):
     '''
     renders the flashcards home page
     '''
-    qry= buildhouse.objects.order_by('-username').filter(is_active=True)
-    context={'operation':qry}
+    qry= get_object_or_404(about, title='UgCon')
+    context={'about':qry}
 
     return render(request,'flashcards/home.html',context)
 
@@ -285,6 +285,9 @@ def myactivity(request):
     '''
     renders the my activity page
     '''
+    if request.method =='GET':
+        sword= request.GET.get('type')
+        print(sword)
     return render(request, 'flashcards/myactivity.html', context=None)
 
 
@@ -380,5 +383,10 @@ def ugbus(request):
 
 
 def siteservices(request):
-    context={}
+    site_services = service.objects.order_by('title')
+    context={'site_services':site_services}
     return render(request, 'flashcards/siteservices.html', context)
+
+
+def sought(request, src_id):
+    print(src_id)

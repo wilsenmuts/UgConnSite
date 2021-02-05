@@ -32,12 +32,13 @@ def home(request):
             login(request, user)
             return HttpResponseRedirect('flashcards/activity')
         else:
-            return HttpResponse('Check your details and retry to login')
+            context={'query':'Invalid login details. Please try again or register...'}
+            return render(request, 'home.html', context)
     context = {} #an empty dictionary
     return render(request, 'home.html', context)
 
 def log_out(request):
-    del request.session['username']
+    #del request.session['username']
     logout(request)
     return HttpResponse("<strong>You are logged out.</strong>")
 
@@ -60,7 +61,7 @@ def register(request):
 
 
         )
-        return HttpResponse('You have been successfully registered...')
+        return HttpResponseRedirect('/flashcards/activity')
     context = {}
     return render(request, 'register.html', context=None)
 

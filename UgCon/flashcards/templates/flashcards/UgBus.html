@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block sidepanel %}
-<div class='customeractivity'>
+<div class='customeractivity bg-brown padding rounded'>
 
-<p>FOLLOW THE STATE OF BUSINESS IN UGANDA THROUGH EYES OF INSIDERS</p>
+<p class="lead text-center text-light bg-greysan padding rounded">FOLLOW THE STATE OF UGANDA THROUGH EYES OF INSIDERS</p>
 <hr>
 {% if request.user.is_superuser %}
-<form method='POST'>
+<form class='form-max form-group bg-greysan padding rounded text-white' method='POST'>
 {% csrf_token %}
-{{ form }}
-<input class='button3' type='submit' value='POST'>
+{{ form.as_table }}
+<button class="btn bg-brownish">POST UPDATE</button>
 </form>
 <br><br>
 {% endif %}
@@ -18,19 +18,22 @@
 <div>
 		{% if my %}
             {% for action in my %}
-            <div class='article'>
-            <p style='color:maroon;'>{{action.author}} posted about {{action.about}} on {{ action.date_as_is }} </p>
+            <div class='bg-brownish padding glow-card border border-dark rounded'>
+            <p style='color:maroon;'><text class='text-navy'>{{action.author}}</text> posted about <text class='text-navy'>{{action.about}}</text> on <text class='text-primary'>{{ action.date_as_is }}</text> </p>
             <hr>
-            <h3 style='color:blue;' > {{action.title}}</h3>
-            <p align='justify'> {{action.notes}}</p>
-            <button class='button'><a href= {{action.site}} >Follow Article</a></button>
+            <h5 style='color:blue;' > {{action.title}}</h5>
+            <p align='justify'> {{action.notes|truncatewords:75}}</p>
+            {% if request.user.is_staff %}
+            <button class='btn bg-greysan'><a class="text-light text-decoration-none" href= {{action.site}} >Delete Article <i class="fas fa-broom    "></i></a></button>
+            {% endif %}
+            <button class='btn bg-greysan'><a class="text-light text-decoration-none" target="_blank" href= {{action.site}} >Follow Article <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a></button>
             </div>
             <br>
             {% endfor %}
         {% else %}
             <h2> No Articles available </h2>
         {% endif %}
-    <div class="pagination">
+    <div class="pagination bg-white padding">
     <span class="step-links">
         {% if my.has_previous %}
             <a href="?page=1">&laquo; first</a>

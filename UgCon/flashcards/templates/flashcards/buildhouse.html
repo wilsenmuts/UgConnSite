@@ -3,35 +3,37 @@
 <html>
 	<head>
 		<title>UgCon</title>
+		<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel='stylesheet' href={% static 'css/bootstrap.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/all.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/styler.css' %} />
 		<link rel='stylesheet' href={% static 'css/style1.css' %} />
 	</head>
-	<body>
-    <div class='sidepanel'>
-    <p>BUILD HOUSE</p>
+	<body class='bg-mg2'>
+    <br>
+    <div align='center'>
+    <div class='form-out-max bg-greysan rounded padding' align=center>
+    <br>
+    <h3 class="text-center text-light">BUILD HOUSE</h3>
     <hr>
-    <p>Fill in the form to build house remotely</p>
-    <form method='POST'>
+    <form method='POST' class="form-max rounded padding">
     {% csrf_token %}
-    <table>
-        <tr>
-            <td>Location:</td><td><input type='text' placeholder='eg (Kalisizo, Kyotera)' name='org'required></td>
-        </tr>
-        <tr>
-            <td>Structure:</td><td><SELECT NAME="type"> <OPTION VALUE= "Bungalow">Bungalow</OPTION> <OPTION SELECTED VALUE="2 levels"> 2 Levels</OPTION><OPTION VALUE="3 Levels">3 Levels </OPTION> <OPTION VALUE="Other">Others (Specify in Description) </OPTION> </SELECT></td>
-        </tr>
-        <tr>
-            <td>Service provider:</td><td><SELECT NAME="provider"> <OPTION VALUE= "ROKO">ROKO</OPTION> <OPTION SELECTED VALUE="ISA"> ISA </OPTION><OPTION VALUE="Any">Any </OPTION> <OPTION VALUE="Other">Others (Specify in Description) </OPTION></td>
-        </tr>
-        <tr>
-            <td align=top>Description:</td><td><textarea name='notes' placeholder='If you selected anywhere others please specify here' cols=50 rows=10></textarea></td>
-        </tr>
-        <tr>
-            <td><button class='button2'>Submit</button></td>
-        </tr>
-    </table>
+            <label class="text-light">Location:</label>
+            <input class='form-control' type='text' placeholder='eg (Kalisizo, Kyotera)' name='org'required>
+            <label class="text-light">Structure:</label>
+            <SELECT class='form-control' NAME="type"> <OPTION VALUE= "Bungalow">Bungalow</OPTION> <OPTION SELECTED VALUE="2 levels"> 2 Levels</OPTION><OPTION VALUE="3 Levels">3 Levels </OPTION> <OPTION VALUE="Other">Others (Specify in Description) </OPTION> </SELECT>
+            <label class="text-light">Service provider:</label>
+            <SELECT class='form-control' NAME="provider"> <OPTION VALUE= "ROKO">ROKO</OPTION> <OPTION SELECTED VALUE="ISA"> ISA </OPTION><OPTION VALUE="Any">Any </OPTION> <OPTION VALUE="Other">Others (Specify in Description) </OPTION></SELECT>
+            <label class="text-light">Description:</label>
+            <textarea name='notes' class='form-control' placeholder='If you selected anywhere others please specify here' cols=50 rows=5></textarea><br>
+            <button class='btn btn-light'> Create Activity <i class="fa fa-plus" aria-hidden="true"></i></button>
     </form>
-    <h4>BRIEFING</h4>
-    <p>This module enables you to build a house remotely. We shall connect you to our agent who will help you to build your house even when you are away. The pricing and the planning will all be done between you and the agent. However, we discourage you from giving the money to buy equipment and other expenditure to the agent. All paymenst should be made through a link that we shall provide to you. This is for your own safety. Even though, our agents have been proved trustworthy, they are human and if not monitored they could do the unexpected.</p>
-    <div>
+    <br>
+    <h4 class="text-center">BRIEFING</h4>
+    <p class='text-justify'>This module enables you to build a house remotely. We shall connect you to our agent who will help you to build your house even when you are away. The pricing and the planning will all be done between you and the agent. However, we discourage you from giving the money to buy equipment and other expenditure to the agent. All paymenst should be made through a link that we shall provide to you. This is for your own safety. Even though, our agents have been proved trustworthy, they are human and if not monitored they could do the unexpected.</p>
+    </div>
+    </div>
     </body>
 </html>

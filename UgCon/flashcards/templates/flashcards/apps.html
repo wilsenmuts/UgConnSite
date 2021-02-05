@@ -1,65 +1,69 @@
 {% extends "base.html" %}
 
 {% block sidepanel %}
-<div class='customeractivity'>
-<p> DOWNLOAD OUR APPLICATIONS</p>
+<div class='customeractivity bg-brown padding rounded'>
+<div class="bg-greysan padding rounded">
+<p class='text-center lead'> DOWNLOAD OUR APPLICATIONS</p>
 <hr>
-<div class="row">
-    <div class='card2'>
-    <a href= "{% url 'flashcards:apk_download' %}">
-        {% load static %}<img src="{% static "images/android.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Android App</h4>
-            <hr>
-            <p style='color:black;'>Our mobile application for use on Android phone is available using this link and in the google playstore. </p>
-            <p style='color:black;'>Our Mobile Android Platform provides our customer with a range of functionalities that are available on the website. Some functionalities are left out so as to reduce on the bulk of the application.<p>
+<p class='text-justify'>You can download an application transfer it to your device and install it. Or if you want, you could go to your device's application market place and download the application. Aside from that, our applications are also available on the official website of Mubosoft who also happenes to be our partner and helps us develop our systems and tehnology</p>
+<p>All our application have gone through testing and are able to run on their dedicated devices.</p>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 ">
+    <div class='col mb-4'>
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none"  href= "{% url 'flashcards:apk_download' %}">
+        {% load static %}<img class="fit-image" src="{% static "images/android.gif" %}" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <h5 align=center style='color:maroon;'><i class="fab fa-google-play    "></i> Android</h5>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= "{% url 'flashcards:apk_download' %}">
-        {% load static %}<img src="{% static "images/ios.png" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>I-Phone App</h4>
-            <hr>
-            <p style='color:black;'>Our mobile application for use on IOS phones is available using this link and in the apple playstore. </p>
-            <p style='color:black;'>Our Mobile i-OS Platform provides our customer with a range of functionalities that are available on the website. Some functionalities are left out so as to reduce on the bulk of the application.<p>
+    </div>
+
+    <div class="col mb-4">
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= "{% url 'flashcards:apk_download' %}">
+        {% load static %}<img class="fit-image" src="{% static "images/iphone.gif" %}" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <h5 align=center style='color:maroon;'><i class="fab fa-app-store-ios    "></i> I-Phone</h5>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= "{% url 'flashcards:apk_download' %}">
-        {% load static %}<img src="{% static "images/microsoft.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Windows  PC App</h4>
-            <hr>
-            <p style='color:black;'>Our windows application for use on windows machines is available using this link. </p>
-            <p style='color:black;'>Our windows Platform application provides you with a range of functionalities that are available on the website. Some functionalities are left out but with a view to add them to our application as soon as possible.<p>
+    </div>
+
+    <div class='col mb-4'>
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= "{% url 'flashcards:apk_download' %}">
+        {% load static %}<img class="fit-image" src="{% static "images/windows.gif" %}" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <h5 align=center style='color:maroon;'> <i class="fab fa-windows    "></i> Windows PC</h5>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= "{% url 'flashcards:apk_download' %}">
-        {% load static %}<img src="{% static "images/osx.png" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'> MacBook App</h4>
-            <hr>
-            <p style='color:black;'>Our OSX application for use on MacBook machines is available using this link. </p>
-            <p style='color:black;'>Our MacBook or OSX Platform application provides you with a range of functionalities that are available on the website. Some functionalities are left out but with a view to add them to our application as soon as possible.<p>
+    </div>
+
+    <div class="col mb-4">
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= "{% url 'flashcards:apk_download' %}">
+        {% load static %}<img class="fit-image" src="{% static "images/osx.gif" %}" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <h5 align=center style='color:maroon;'> <i class="fab fa-apple    "></i> MacBook</h5>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= "{% url 'flashcards:apk_download' %}">
-        {% load static %}<img src="{% static "images/linux.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Linux App</h4>
-            <hr>
-            <p style='color:black;'>Our debian application for use on linux machines is available using this link. </p>
-            <p style='color:black;'>Our windows Platform application provides you with a range of functionalities that are available on the website. Some functionalities are left out but with a view to add them to our application as soon as possible<p>
+    </div>
+
+    <div class='mb-4 col'>
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= "{% url 'flashcards:apk_download' %}">
+        {% load static %}<img class="fit-image" src="{% static "images/linux.gif" %}" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <h5 align=center style='color:maroon;'> <i class="fab fa-linux    "></i>  Linux</h5>
         </div>
     </a>
     </div>
+    <div>
+</div>
 </div>
 </div>
 

@@ -1,46 +1,3 @@
-.pageheader {
-    color: rgb(14, 212, 14);
-    font-size: 2.25em;
-    text-align: center;
-}
-
-.pageheader1 {
-    color: rgb(231, 221, 220);
-    font-size: 1.10em;
-    text-align: center;
-}
-
-body {
-    background-color: rgb(41, 16, 41);
-    color: aliceblue;
-    font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif
-}
-
-nav {
-    background: green;
-    padding: 10px;
-    border-radius: 10px;
-    margin-left: 20%;
-}
-
-nav a {
-    color: white;
-    text-decoration-line: None;
-    font-size: 1.10em;
-}
-
-a {
-    color: white;
-    text-decoration-line: None;
-}
-
-.sidepanel {
-    width: 80%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
 th {
     width: 40%;
     height: 35px;
@@ -68,35 +25,8 @@ input {
     padding-left: 10px
 }
 
-.button {
-    width: 70%;
-    height: 30px;
-    background-color: darkgreen;
-    border: none;
-    color: aliceblue;
-    font-size: 1.10em;
-    border-radius: 5px;
-}
-
-.button a {
-    color: aliceblue;
-    text-decoration-line: none;
-}
-
 form {
-    background-color: rgb(3, 165, 3);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.4);
-}
-
-.column {
-    float: left;
-    width: 20%;
-    background-color: maroon;
-    color: white;
-    border-radius: 5px;
-    padding-left: 10px;
+    box-shadow: 0 0px 8px 0 rgba(198, 163, 163, 0.4);
 }
 
 .button2 {
@@ -107,58 +37,29 @@ form {
     border-radius: 5px;
 }
 
-.customeractivity {
-    padding-top: 2%;
-    padding-left: 2%;
-    margin-left: 20%;
-    margin-right: 20%;
+.glow-card {
+    box-shadow: 0 6px 12px 0 rgba(32, 9, 9, 0.657);
 }
 
-.warning {
-    font-size: 2.2em;
-    color: rgb(134, 37, 37);
-}
-
-.column1 {
-    background-color: green;
-    color: white;
-    border-radius: 5px;
-    padding: 10px;
-    width: 80%;
-}
-
-.card {
-    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.4);
-    transition: 0.3s;
-    border-radius: 5px;
-    float: left;
-    width: 45%;
-    padding: 16px;
-    color: rgb(8, 8, 8);
-}
-
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.5);
-    color: rgb(7, 6, 6);
-}
-
-.container {
-    padding: 2px 16px;
-    background-color: aliceblue;
+.glow-card:hover {
+    box-shadow: 0 2px 4px 0 rgba(241, 223, 223, 0.489);
+    transition-duration: 0.45s;
+    filter: grayscale(80%)
 }
 
 img {
     border-radius: 5px 5px 0 0;
 }
 
-.row {
+.glow-row {
     margin: 0 -5px;
 }
 
-.row:after {
+.glow-row:after {
     content: "";
     display: table;
     clear: both;
+    filter: grayscale(30%)
 }
 
 .card2 {
@@ -201,31 +102,4 @@ img {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(176, 208, 228, 0.4);
-}
-
-@media screen and (max-width: 600px) {
-    .card {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-    }
-    body {
-        font-size: 12px;
-    }
-    .column {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-    }
-    nav {
-        background: rgb(0, 21, 128);
-        padding: 10px;
-        border-radius: 10px;
-        margin-left: 20%;
-    }
-    nav a {
-        color: white;
-        text-decoration-line: None;
-        font-size: 1.2em;
-    }
 }

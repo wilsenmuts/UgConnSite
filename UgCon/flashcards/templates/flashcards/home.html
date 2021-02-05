@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
 {% block  sidepanel%}
-	<div class='sidepanel'>
-		{% if operation %}
-            <ul>
-                {% for action in operation %}
-                <li> {{action}} </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p> No Decks found! Contact the Admin </p>
-        {% endif %}
-	</div>
+	<div class='sidepanel bg-greysan padding rounded'>
+    <br>
+		<p class='text-center text-light h1'>{{about.title}}</p>
+        <hr>
+        <section>
+        <p class='text-justify'>{{about.describe|linebreaksbr}}<p>
+        </section><br>
+        <section class='text-light'>
+            <p> <i class="fas fa-industry    "></i> Location: {{about.reside}}</p>
+            <p> <i class="fa fa-phone" aria-hidden="true"></i> Contact: <a href="tel:{{about.contact}}">{{about.contact}}</a></p>
+            <p> <i class="fas fa-envelope    "></i> Email: <a href="mailto:{{about.email}}">{{about.email}}</a></p>
+            <p> <i class="fab fa-whatsapp    "></i> WhatsApp:<a href="tel:{{about.watsapp}}"> {{about.watsapp}}</a></p>
+        </section>
 {% endblock %}

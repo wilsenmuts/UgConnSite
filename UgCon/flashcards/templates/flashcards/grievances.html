@@ -1,27 +1,15 @@
 {% extends "base.html" %}
 
 {% block sidepanel %}
-<div class='customeractivity'>
-<p> GRIEVANCES</p>
-<hr>
-<div class='sidepanel'>
-		<p>Fill in Grievance</p>
-		<form>
-			<p class='pageheader1'>Fill in the form </p>
-			<table>
-				<tr>
-					<th>Title:</th><th><input type='text' placeholder='give it a title' name='title'></th>
-				</tr>
-				<tr>
-					<th>About</th><th><input type='text' placeholder='What is it about' name='about'></th>
-				</tr>
-                <tr>
-					<th>Describe</th><th><textarea rows="6" width=80% name="description"></textarea></th>
-				</tr>
-				<tr>
-					<th><input class='button' type='submit' value='Login'></th><th></th>
-				</tr>
-			<table>
+<br>
+<div class='customeractivity bg-greysan padding rounded'>
+<div class=' padding rounded' align=center>
+		<p class='text-center'> GRIEVANCES</p>
+		<form method="POST" class="form-max padding rounded" >
+			<input type='text' class="form-control" placeholder='Title' name='title'><br>
+			<input type='text' class="form-control" placeholder='What is it about' name='about'><br>
+			<textarea rows="6" class="form-control" width=80% placeholder="Describe" name="description"></textarea><br>
+			<button class="btn btn-primary">Submit Grievance</button>
 		</form>
 </div>
 

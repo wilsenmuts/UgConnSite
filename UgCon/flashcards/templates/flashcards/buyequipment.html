@@ -3,45 +3,44 @@
 <html>
 	<head>
 		<title>UgCon</title>
+		<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel='stylesheet' href={% static 'css/bootstrap.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/all.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/styler.css' %} />
 		<link rel='stylesheet' href={% static 'css/style1.css' %} />
 	</head>
 	<body>
-    <div class='sidepanel'>
-    <p>BUY EQUIPMENT</p>
+    <br>
+    <div align=center>
+    <div class='form-out-max padding rounded bg-greysan' align=center><br>
+    <h3 class="text-center text-light">BUY EQUIPMENT</h3>
     <hr>
-    <p>Fill in the form to buy equipment</p>
-    <form method='POST'>
+    <form method='POST' class="form-max rounded padding">
     {% csrf_token %}
-    <table>
-        <tr>
-            <td>Name of item:</td><td><input type='text' placeholder='Name of item ' name='item'required></td>
-        </tr>
-        <tr>
-            <td>Quantity:</td><td><input type='text' placeholder='eg (30 metallic doors)' name='quantity'required></td>
-        </tr>
-        <tr>
-            <td>Quality:</td><td><input type='text' placeholder=' eg (All new and well furnished)' name='quality'></td>
-        </tr>
-        <tr>
-            <td>Target Person:</td><td><input type='text' placeholder='can be person or business' name='target_p'required></td>
-        </tr>
-        <tr>
-            <td>Target Location:</td><td><input type='text' name='target_l'required></td>
-        </tr>
-        <tr>
-            <td>Target Contact:</td><td><input type='text' name='contact'required></td>
-        </tr>
-        <tr>
-            <td align=top>Notes:</td><td><textarea cols=50 rows=10 name='notes'></textarea></td>
-        </tr>
-        <tr>
-            <td><button class='button2'>Submit</button></td>
-        </tr>
-    </table>
+            <label class="text-light">Name of item:</label>
+            <input type='text' class='form-control' placeholder='Name of item ' name='item'required>
+            <label class="text-light">Quantity:</label>
+            <input type='text' class='form-control' placeholder='eg (30 metallic doors)' name='quantity'required>
+            <label class="text-light">Quality:</label>
+            <input type='text' class='form-control' placeholder=' eg (All new and well furnished)' name='quality'>
+            <label class="text-light">Target Person:</label>
+            <input type='text' class='form-control' placeholder='can be person or business' name='target_p'required>
+            <label class="text-light">Target Location:</label>
+            <input type='text' class='form-control' name='target_l'required>
+            <label class="text-light">Target Contact:</label>
+            <input type='text' class='form-control' name='contact'required>
+            <label class="text-light" align=top>Notes:</label>
+            <textarea cols=50 rows=5 class='form-control' name='notes'></textarea>
+            <br>
+    <button class='btn bg-brownish'>Create Activity <i class="fa fa-plus" aria-hidden="true"></i></button>
     <input type="hidden" name="next" value="{{ request.path }}">
     </form>
-    <h4>BRIEFING</h4>
-    <p>One can order a set of equipment to be brought to a specific place or person. One should note that the transport-fare is to be charged on him and UgConn will withold a commission of atleast 5% to 10% basing on the equipment that is being shipped to the person.</p>
-    <div>
+    <br>
+    <h4 class='text-center'>BRIEFING</h4>
+    <p>One can order a set of equipment to be brought to a specific place or person. One should note that the transport-fare is to be charged on him or her.</p>
+    </div>
+    </div>
     </body>
 </html>

@@ -140,3 +140,24 @@ class article(models.Model):
 
     def __str__(self):
         return self.title
+
+class about(models.Model):
+    title = models.CharField(max_length=50)
+    describe = models.TextField(blank=True)
+    reside = models.CharField(max_length=250, blank=True)
+    contact = models.CharField(max_length=250, blank=True)
+    watsapp  = models.CharField(max_length=250, blank=True)
+    email  = models.CharField(max_length=250, blank=True)
+
+    def __str__(self):
+        return self.title
+
+class service(models.Model):
+    title = models.CharField(max_length=50)
+    describe = models.TextField(blank=True)
+    status = models.BooleanField()
+    link = models.URLField()
+
+    def __str__(self):
+        return self.title
+    

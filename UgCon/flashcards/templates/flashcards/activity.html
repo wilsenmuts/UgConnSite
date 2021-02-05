@@ -1,103 +1,135 @@
 {% extends "base.html" %}
 
 {% block sidepanel %}
-<div class='customeractivity'>
-<p>CREATE ACTIVITY</p>
+<div class="bg-brown padding rounded">
+<p class='text-center lead bg-greysan padding rounded text-light'>CREATE ACTIVITY</p>
 <hr>
     {% if reply %}
-    <h2 style='background-color:aliceblue; color:darkblue; padding:10px; text-align:center; border-radius:5px;'>&#10003; {{reply}}</h2>
+   <div class="alert alert-primary alert-dismissible fade show" role="alert">
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           <span class="sr-only">Close</span>
+       </button>
+       <strong>Thank you, {{request.user}}, for using Ugcon. </strong> {{reply}}
+   </div>
     {% else %}
     {% endif %}
-<div class='row'>
-    <div class='card2'>
-    <a href= {% url 'flashcards:investmoney' %}>
-        {% load static %}<img src="{% static "images/invest.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center  style='color:maroon;'>Create Investment</h4>
+<div class='row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4'>
+    <div class='col mb-4'>
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= {% url 'flashcards:investmoney' %}>
+        {% load static %}<img src="{% static "images/invest.jpg" %}"  class="fit-image" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <p class="card-title text-center"  style='color:maroon;'>Create Investment</p>
             <hr>
-            <p  style='color:black;'>For those who want to startup an Investment or anything related</p>
+            <p  class="text-dark">Startup an Investment with our business experts.</p>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= {% url 'flashcards:donatemoney' %}>
-        {% load static %}<img src="{% static "images/donate.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Donate Money</h4>
+    </div>
+
+    <div class='col mb-4'>
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= {% url 'flashcards:donatemoney' %}>
+        {% load static %}<img src="{% static "images/donate.jpg" %}" class="fit-image" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <p class="card-title text-center" style='color:maroon;'>Donate Money</h4>
             <hr>
-            <p style='color:black;'>For those who who want to donate money to organisation or a cause</p>
+            <p class='text-dark'>Donate money to an organisation or a given cause.</p>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= {% url 'flashcards:buyequipment' %}>
-        {% load static %}<img src="{% static "images/black.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Buy Equipment</h4>
+    </div>
+
+    <div class="col mb-4">
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= {% url 'flashcards:buyequipment' %}>
+        {% load static %}<img src="{% static "images/black.jpg" %}" class="fit-image" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <p class="card-title text-center" style='color:maroon;'>Buy Equipment</p>
             <hr>
-            <p style='color:black;'>For those who want to buy equipment or other items remotely.</p>
+            <p class="text-dark">Buy equipment or any item for your business venture.</p>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= {% url 'flashcards:buildhouse1' %}>
-        {% load static %}<img src="{% static "images/buildhouse.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Build House</h4>
+    </div>
+
+    <div class="col mb-4">
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= {% url 'flashcards:buildhouse1' %}>
+        {% load static %}<img src="{% static "images/buildhouse.jpg" %}" class="fit-image" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <p class="text-center card-title" style='color:maroon;'>Build House</p>
             <hr>
-            <p style='color:black;'>For those who want to build a house under an agent's supervision</p>
+            <p class='text-dark'>Build a house with constant feedback under supervision.</p>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= {% url 'flashcards:buyhouse' %}>
-        {% load static %}<img src="{% static "images/byhouse.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Buy House</h4>
+    </div>
+
+    <div class="col mb-4">
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= {% url 'flashcards:buyhouse' %}>
+        {% load static %}<img src="{% static "images/byhouse.jpg" %}" class="fit-image" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <p class="card-title text-center" style='color:maroon;'>Buy House</p>
             <hr>
-            <p style='color:black;'>For those who want to buy a house in Uganda with the help of an agent</p>
+            <p class='text-dark'>Buy a house with our help from areas of choice.</p>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= {% url 'flashcards:buyland' %}>
-        {% load static %}<img src="{% static "images/bykand.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Buy Land</h4>
+    </div>
+
+    <div class="col mb-4">
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= {% url 'flashcards:buyland' %}>
+        {% load static %}<img src="{% static "images/bykand.jpg" %}" class="fit-image" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <p class="card-title text-center" style='color:maroon;'>Buy Land</p>
             <hr>
-            <p style='color:black;'>For those who want to buy land in Uganda with the help of our agents</p>
+            <p class="text-dark">Buy land with our help or other genuine sellers.</p>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= {% url 'flashcards:payment' %}>
-        {% load static %}<img src="{% static "images/paytry.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Payments</h4>
+    </div>
+
+    <div class="col mb-4">
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= {% url 'flashcards:payment' %}>
+        {% load static %}<img src="{% static "images/paytry.jpg" %}" class="fit-image" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <p class="card-title text-center" style='color:maroon;'>Payments</p>
             <hr>
-            <p style='color:black;'>For those who want to make payments while outside the country</p>
+            <p class="text-dark">Process payments to a group of people or even business.</p>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= {% url 'flashcards:others' %}>
-        {% load static %}<img src="{% static "images/management.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:maroon;'>Other Activity</h4>
+    </div>
+
+    <div class="col mb-4">
+    <div class='card glow-card bg-brownish'>
+    <a class="text-decoration-none" href= {% url 'flashcards:others' %}>
+        {% load static %}<img src="{% static "images/management.jpg" %}" class="fit-image" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <p class='card-title text-center' style='color:maroon;'>Other Activity</p>
             <hr>
-            <p style='color:black;'>For those who want to do anyother activity remotely with the help of Ugcon</p>
+            <p class='text-dark'>Contact us in case of anyother activity and we see a way out.</p>
         </div>
     </a>
     </div>
-    <div class='card2'>
-    <a href= {% url 'flashcards:siteservices' %}>
-        {% load static %}<img src="{% static "images/service.jpg" %}" width=100% height= 200 alt="My image">
-        <div class="container">
-            <h4 align=center style='color:black;'>Check Site Services</h4>
+    </div>
+
+    <div class="col mb-4">
+    <div class='card glow-card'>
+    <a class="text-decoration-none" href= {% url 'flashcards:siteservices' %}>
+        {% load static %}<img src="{% static "images/service.jpg" %}" class="fit-image" width=100% height= 200 alt="My image">
+        <div class="card-body">
+            <p class='text-center' style='color:black;'>Check Site Services</p>
             <hr>
-            <p style='color:black;'>For those who want to check out the services provided by the site</p>
+            <p style='color:black;'>Links to other system sites for self service and parners.</p>
         </div>
     <a>
+    </div>
     </div>
 </div>
 </div>

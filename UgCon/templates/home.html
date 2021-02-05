@@ -1,25 +1,42 @@
 {% extends "base.html" %}
 
+{% block metaData %}
+<meta name="description" content="UgConn is the site for everyone who is planning to start-up a busniess, buy land or house, build, make payments and so on. This site was built with the view of accomodating people in diaspora into the country's development but is accessible to anyone.">
+<meta name="keywords" content="Ugcon, Uganda Connect, Investemnt, Uganda, Business, Start up a Business in Uganda, Options to investment in Uganda, Investment methods in Uganda, I want to invest in Uganda, investment partners in Uganda, help in investment in Uganda, Investement within Uganda, Buy Land, Build house, Buy House, pay employees online, pay bills remotely, Invest remotely, remote investment, uganda remotely, remote Uganda">
+
+
+{% endblock metaData %}
+
+
 {% block sidepanel %}
 
-	<div class='sidepanel'>
-		<p>Welcome to UgCon. Please, login to get the full previledges of being a member of UgCon.</p>
-		<form method='POST'>
-			{% csrf_token %}
-			<p class='pageheader1'>Fill in the login form </p>
-			<table>
-				<tr>
-					<th>Username:</th><th><input type='text' placeholder='Your Username' name='uname'></th>
-				</tr>
-				<tr>
-					<th>Password:</th><th><input type='Password' placeholder='Your Password' name='pword'></th>
-				</tr>
-				<tr>
-					<th><input class='button' type='submit' value='Login'></th><th><button class ='button'><a href="{% url 'register'%}" >Register</a></button></th>
-				</tr>
-			<table>
-		</form><br>
-		<button class ='button'><a href="{% url 'logout'%}" >logout</a></button>
-	</div>
+{% if query %}
+<br>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		<span class="sr-only">Close</span>
+	</button>
+	<strong> <i class="fas fa-exclamation-triangle    "></i></strong> {{query}}
+</div>
+{% endif %}
 
+<div class='bg-brown padding rounded'>
+<p class='h3 text-center bg-greysan padding rounded text-light rounded'>Welcome to UgCon</p>
+	<div align=center>
+		<form method='POST' class="form-max form-group bg-greysan padding rounded">
+			{% csrf_token %}
+			<p class='text-light'>Fill In The Login Form </p>
+					<label class='text-light'>Username:</label>
+					<input type='text' class='form-control' placeholder='Your Username' name='uname'>
+					<label class='text-light'>Password:</label>
+					<input type='Password' class="form-control" placeholder='Your Password' name='pword'><br>
+					<button type="submit" class="btn btn-light">Submit</button>
+					<a class="btn btn-light" href="{% url 'register'%}" >  Register</a><br><br>
+					<a href="">Forgot Password?</a><br>
+					<br>
+					{% load static %}<img src="{% static 'images/ugconn.png' %}" height=35 width=35 class="rounded" alt="ugcon logo">
+		</form><br>
+	</div>
+</div>
 {% endblock %}

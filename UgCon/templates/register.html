@@ -3,38 +3,39 @@
 <html>
 	<head>
 		<title>UgCon</title>
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel='stylesheet' href={% static 'css/bootstrap.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/all.min.css' %} />
+		<link rel='stylesheet' href={% static 'css/styler.css' %} />
 		<link rel='stylesheet' href={% static 'css/style1.css' %} />
 	</head>
-	<body>
-    <div class='sidepanel'>
-    <p>Register here to access UgCon services</p>
+	<body class='bg-mg2'>
+    <br>
+    <div class='sidepanel bg-greysan padding rounded container form-out-max' align=center>
+    <p>Register Here To Access UgCon Services</p>
     <hr>
-    <form method='POST'>
+    <form class='form-group padding form-max' method='POST'>
     {% csrf_token %}
-    <table>
-        <tr>
-            <td>First Name:</td><td><input type='text' name='fname' required></td>
-        </tr>
-        <tr>
-            <td>Surname:</td><td><input type='text' name='sname' required></td>
-        </tr>
-        <tr>
-            <td>Username:</td><td><input type='text' name='uname' required></td>
-        </tr>
-        <tr>
-            <td>Email:</td><td><input type='email' name='email'required></td>
-        </tr>
-        <tr>
-            <td>Password</td><td><input type='text' name='pswd' required></td>
-        </tr>
-        <tr>
-            <td>Re-enter Password</td><td><input type='text' name='rpswd' required></td>
-        </tr>
-        <tr>
-            <td><button class='button2'>Register</button></td>
-        </tr>
-    </table>
+
+            <label class='form-text'>First Name:</label>
+            <input type='text' class='form-control' name='fname' required>
+            <label class='form-text'>Surname:</label>
+            <input type='text' class='form-control' name='sname' required>
+            <label class='form-text'>Username:</label>
+            <input type='text' class='form-control' name='uname' required>
+            <label class='form-text'>Email:</label>
+            <input type='email' class='form-control' name='email'required>
+            <label class='form-text'>Password</label>
+            <input type='password' class='form-control' name='pswd' required>
+            <label class='form-text'>Re-enter Password</label>
+            <input type='password' class='form-control' name='rpswd' required>
+            <br>
+            <button class='btn bg-brownish'>Register</button>
     </form>
     <div>
+    <br>
+    <br>
     </body>
 </html>

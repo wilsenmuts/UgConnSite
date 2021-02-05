@@ -16,15 +16,19 @@ Including another URLconf
 
 #main urls.py
 from django.contrib import admin
+from django.urls import path
 from django.conf.urls import url, include
 from . import views
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^$', views.home, name= 'home'),
     url(r'^register/', views.register, name= 'register'),
     url(r'^flashcards/', include(('flashcards.urls','reviews'), namespace= 'flashcards')),
     url(r'^LitoAngel/', include(('LitoAngel.urls', 'reviews'), namespace= 'LitoAngel')),
     url(r'^chat/', include(('django_chatter.urls', 'reviews'), namespace ='chat')),
     url(r'^logout/', views.log_out, name = 'logout'),
+    path('change-password/', auth_views.PasswordChangeView.as_view(template_name='commons/change-password.html',success_url = '/'),name='change_password'),
 ]
