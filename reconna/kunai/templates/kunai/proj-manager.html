@@ -1,0 +1,58 @@
+{% extends "base1.html" %} {% load static %} {% block sidepanel %}
+
+<div>
+    {% if projects %}
+    <h4 style="font-family: lato-bold;" class="text-center text-brown">Active Activities</h4>
+    <br>
+    <div class="padding rounded" align="center">
+        <form class="form-inline" style=" max-width: 450px;" method="get" action="">
+            <input type="text" class="form-control padding" style="width:300px;margin: 5px;" name="" id="" placeholder="project name">
+            <button class="btn bg-greysan padding" style="margin: 5px;">Search </button>
+        </form>
+    </div>
+    <br>
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Agent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td style="min-width: 100px;max-width:250px;white-space: nowrap;overflow:hidden;" scope="row">{{project.name}}</td>
+                {% if project.status %}
+                <td style="width: 100px;">Active</td>
+                {% else %}
+                <td style="width: 100px;"><a class="btn bg-greysan" href="#">Update Timeline</a></td>
+                {% endif %} {% if project.assign_agent %}
+                <td style="width: 100px;white-space: nowrap;overflow:hidden;">{{project.assign_agent}}</td>
+                {% else %}
+                <td style="min-width: 100px;max-width:250px;">
+                    <form>
+                        <div style="display:flex">
+                            <input type="text" name="" id="" style="width: 200px;" class="form-control box-margin" placeholder="" aria-describedby="helpId">
+                            <button class="btn bg-greysan box-margin"> Assign</button>
+                        </div>
+                    </form>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+    <div align="center">
+        <br><br>
+        <h4 style="font-family: lato">Nothing here yet</h4>
+        <p>All active projects appear here ...</p>
+        <br><br> {% load static %}
+        <lottie-player src="{% static 'assets/lotties/27486-empty-state-notifications.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 300px;" loop autoplay></lottie-player>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock sidepanel %}

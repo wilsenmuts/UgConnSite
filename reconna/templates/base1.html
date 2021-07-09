@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang='en'>
+
+<head>
+    <title>UgCon - Do activities in Uganda while outside Uganda </title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styler.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <!--Add in the meta data -->
+    <meta name="author" content="UgCon - Remote Activity in Uganda"> {% block metaData %} {% endblock metaData %}
+
+</head>
+
+<body class="scroll-3" style="margin:1px; height:100vh; overflow:scroll;" onload="initScreen()">
+    <div class="row" style="margin:1px;">
+        <!-- Creating the Dashboard-->
+        <div class="bg-greysan padding scroll-3 sticky-top" id="sidepanel" style="height:100vh;overflow-y:scroll;max-width:250px;">
+            <div style="display:flex;align-items:center;justify-items:center;">
+                <img src="{% static 'images/ugconn.png' %}" width="50" height="50">
+            </div>
+            <div align=center>
+                <img class="profile-pic" src="{% static 'images/ugconn.png' %}" width="100px" height="100px">
+            </div>
+            <br><br> {% if request.user.is_staff %}
+            <p class="text-center">{{request.user|upper}}</p>
+            <p class="text-center">{{request.user.email}}</p>
+            <hr color="white">
+            <a class="btn btn-light btn-block" style="font-family: rublik" href="{% url 'kunai:welcome'%}">Projects Admin</a>
+            <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'kunai:pending_projects' %} ">Pending Activity</a>
+            <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'kunai:show_client_activities' %} ">Client Activity</a>
+            <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'kunai:show_notes' %} ">Notes & Feed</a>
+            <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'flashcards:grievances'%} ">My Grievances</a> {% else %}
+            <small><em>This functionality is intended for UgConn Workers only</em></small>
+            <hr color="white "> {% endif %} {% if request.user.is_staff %}
+            <a class="btn-block btn btn-outline-light " style="font-family: rublik" href="{% url 'home' %}">Client-Corner</a> {% endif %} {% if request.user.is_authenticated %}
+            <a class="btn-block btn btn-outline-light " style="font-family: rublik" href="{% url 'logout'%} ">Logout</a> {% endif %}
+            <br>
+            <small class="text-light">Follow us on social media </small>
+            <table>
+                <tr>
+                    <th><i class="fab fa-facebook h1 text-light "></i> </th>
+                    <th> <i class="fab fa-instagram h1 text-light " aria-hidden="true "></i> </th>
+                    <th> <i class="fab fa-twitter h1 text-light " aria-hidden="true "></i></th>
+                </tr>
+            </table>
+            <br>
+
+        </div>
+
+        <!--Creating the main body area-->
+        <div class="col">
+            <button draggable="true" class="h4 border border-dark toggler" id="toggler" onclick="hidePanel()"> <img src="{%static 'slideIn.png' %}" > </button>
+            <button draggable="true" class="h4 border border-dark toggler-sm" id="toggler-sm" onclick="showPanel()"> <img src="{%static 'slideOut.png' %}" > </button>
+            <div class="responsive-panel" id="mainbar-items">{% block sidepanel %} {% endblock %}</div>
+        </div>
+    </div>
+
+    {% block script %} {% endblock %}
+    <script type="text/javascript" src="{% static 'js/fontawesome/all.min.js' %}"></script>
+   
+    <script type="text/javascript" src="{% static 'js/popper/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/glm-ajax.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/aos.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script>
+        AOS.init({
+            offset: 150,
+            duration: 1000,
+        });
+    </script>
+</body>
+
+</html>

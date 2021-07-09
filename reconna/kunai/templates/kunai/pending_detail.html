@@ -1,0 +1,41 @@
+{% extends "base1.html" %} {% load static %} {% block sidepanel %}
+
+<div align="center">
+    {% if project %}
+    <div style="max-width: 600px;margin:10px;">
+        <h5 style="font-family: lato-bold;padding:15px;">Invest Money Module</h5>
+        <p>{{project.notes}}</p>
+    </div>
+    <dialog id="favDialog">
+        <form method="dialog">
+            <p><label>Favorite animal:
+            <select>
+              <option></option>
+              <option>Brine shrimp</option>
+              <option>Red panda</option>
+              <option>Spider monkey</option>
+            </select>
+          </label></p>
+            <menu>
+                <button value="cancel">Cancel</button>
+                <button id="confirmBtn" value="default">Confirm</button>
+            </menu>
+        </form>
+    </dialog>
+
+    <menu>
+        <button id="updateDetails">Update details</button>
+    </menu>
+
+    <output aria-live="polite"></output> {% else %}
+    <div align="center">
+        <br><br>
+        <h4 style="font-family: lato">Nothing here yet</h4>
+        <p>This shows a pending project's details...</p>
+        <br><br> {% load static %}
+        <lottie-player src="{% static 'assets/lotties/27486-empty-state-notifications.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 300px;" loop autoplay></lottie-player>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock sidepanel %}

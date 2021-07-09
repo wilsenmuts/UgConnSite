@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block sidepanel %}
+<div class="bg-white padding" style="height:96vh;">
+    <h4 style="font-family: lato-bold;" class="text-center text-brown">My Notes And Feed</h4>
+    <div align="center">
+        <h4 style="font-family: lato">Nothing here yet</h4>
+        <p>Your feed is away of sharing simple notes with your agent that he may have to check later in the day</p>
+        <br><br> {% load static %}
+        <lottie-player src="{% static 'assets/lotties/27486-empty-state-notifications.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 300px;" loop autoplay></lottie-player>
+    </div>
+
+
+    {% endblock %}

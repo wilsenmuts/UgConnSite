@@ -1,0 +1,155 @@
+{% extends "base.html" %} {% block sidepanel %}
+<div class="padding rounded">
+    <p class="text-center lead bg-greysan padding rounded text-light">CREATE ACTIVITY</p>
+    <div class="padding bg-greysan rounded text-light" style=" max-width: 550px; border-color:maroon;border-width:2px:border-style:redge;">
+    <small>Reconna is a company that is aimed to help you start any commercialized activity from anywhere. When you select an activity below, we shall prompt you to provide us some information. This information is to be used in getting the best agent for you to work with. So do not worry, after you are assigned an agent you will be able to air out all that you would like your project to entail including that which you will miss out on saying in the prompt's form fields </small>
+    </div>
+    <hr> {% if reply %}
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           <span class="sr-only">Close</span>
+       </button>
+        <strong>Thank you, {{request.user}}, for using Reconna. </strong> {{reply}}
+    </div>
+    {% else %} {% endif %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+        <div class="col mb-4">
+            <div data-aos="zoom-in" class="card glow-card bg-white">
+                <a class="text-decoration-none" href="{% url 'flashcards:investmoney' %}"> {% load static %}
+                    <lottie-player src="{% static 'assets/lotties/66358-online-shopping.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 200px;" loop autoplay></lottie-player>
+                    <div class="card-body" style="height:180px;">
+                        <p class="card-title text-center" style="color:maroon;font-family:lato-bold">Create Investment</p>
+                        <hr>
+                        <small class="text-dark text-center">Startup an Investment with our business experts.</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div data-aos="zoom-in" class="card glow-card bg-white">
+                <a class="text-decoration-none" href="{% url 'flashcards:donatemoney' %}">
+                    {% load static %}<lottie-player src="{% static 'assets/lotties/25067-donate.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 200px;" loop autoplay></lottie-player>
+                    <div class="card-body" style="height:180px;">
+                        <p class="card-title text-center" style="color:maroon;font-family:lato-bold">Donate Money</p>
+                        <hr>
+                        <small class="text-dark text-center">Donate money to an organisation or a given cause.</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div data-aos="zoom-in" class="card glow-card bg-white">
+                <a class="text-decoration-none" href="{% url 'flashcards:buyequipment' %}">
+                    <lottie-player src="{% static 'assets/lotties/22575-shop-store-online-buy-icon.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 200px;" loop autoplay></lottie-player>
+                    <div class="card-body" style="height:180px;">
+                        <p class="card-title text-center" style="color:maroon;font-family:lato-bold">Buy Equipment</p>
+                        <hr>
+                        <small class="text-dark">Buy equipment or any item for your business venture.</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div data-aos="zoom-in" class="card glow-card bg-white">
+                <a class="text-decoration-none" href="{% url 'flashcards:buildhouse1' %}">
+                    {% load static %}<lottie-player src="{% static 'assets/lotties/24212-build-of-love.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 200px;" loop autoplay></lottie-player>
+                    <div class="card-body" style="height:180px;">
+                        <p class="card-title text-center" style="color:maroon;font-family:lato-bold">Build House</p>
+                        <hr>
+                        <small class="text-dark">Build a house with constant feedback under supervision.</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div data-aos="zoom-in" class="card glow-card bg-white">
+                <a class="text-decoration-none" href="{% url 'flashcards:buyhouse' %}">
+                    {% load static %}<lottie-player src="{% static 'assets/lotties/24127-buying-a-property.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 200px;" loop autoplay></lottie-player>
+                    <div class="card-body" style="height:180px;">
+                        <p class="card-title text-center" style="color:maroon;font-family:lato-bold">Buy House</p>
+                        <hr>
+                        <small class="text-dark">Buy a house with our help from areas of choice.</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div data-aos="zoom-in" class="card glow-card bg-white">
+                <a class="text-decoration-none" href="{% url 'flashcards:buyland' %}">
+                    {% load static %}<lottie-player src="{% static 'assets/lotties/17746-landscape.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 200px;" loop autoplay></lottie-player>
+                    <div class="card-body" style="height:180px;">
+                        <p class="card-title text-center" style="color:maroon;font-family:lato-bold">Buy Land</p>
+                        <hr>
+                        <small class="text-dark">Buy land with our help or other genuine sellers.</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div data-aos="zoom-in" class="card glow-card bg-white">
+                <a class="text-decoration-none" href="{% url 'flashcards:payment' %}">
+                    {% load static %}<lottie-player src="{% static 'assets/lotties/40485-payment.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 200px;" loop autoplay></lottie-player>
+                    <div class="card-body" style="height:180px;">
+                        <p class="card-title text-center" style="color:maroon;font-family:lato-bold">Process Payments</p>
+                        <hr>
+                        <small class="text-dark">Process payments to a group of people or even business.</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div data-aos="zoom-in" class="card glow-card bg-white">
+                <a class="text-decoration-none" href="{% url 'flashcards:others' %}">
+                    {% load static %}<lottie-player src="{% static 'assets/lotties/31568-pocket-rocket.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 200px;" loop autoplay></lottie-player>
+                    <div class="card-body" style="height:180px;">
+                        <p class="card-title text-center" style="color:maroon;font-family:lato-bold">Other Activities</p>
+                        <hr>
+                        <small class="text-dark">Contact us in case of anyother activity and we see a way out.</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div data-aos="zoom-in" class="card glow-card">
+                <a class="text-decoration-none" href="{% url 'flashcards:siteservices' %}">
+                    {% load static %}<lottie-player src="{% static 'assets/lotties/64158-search-item.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 200px;" loop autoplay></lottie-player>
+                    <div class="card-body" style="height:180px;">
+                        <p class="text-center" style="color:black;">Check Site Services</p>
+                        <hr>
+                        <p style="color:black;">Links to other system sites for self service and parners.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h5 class="text-thick-line text-brown">Partners</h5>
+    <br>
+    <!-- List of Partners-->
+    <div class="row">
+        {% if partners %}
+            {% for partner in partners %}
+            <div class="col" align=center title ='{{partner.notes}}'>
+            <div class="rounded brown-shadow-hover" style="margin:10px ;height:200px;max-width:150px;">
+                <img src="{{partner.logo.url}}" class="rounded fit-image" alt="partner-name" height=150 width=150><br><br>
+                <strong class=" text-decoration-none text-brown" href="">{{partner.name}}</strong>
+            </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <a href="mailto:ugconntech@gmail.com" class="btn bg-greysan">Become A partner</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

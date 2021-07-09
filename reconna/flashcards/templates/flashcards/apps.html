@@ -1,0 +1,96 @@
+{% extends "base.html" %} {% block sidepanel %}
+<div class='customeractivity bg-brown padding rounded'>
+    <div class="bg-greysan padding rounded">
+        <p class='text-center lead'> <strong>DOWNLOAD OUR APPLICATIONS</strong> </p>
+        <hr>
+        <p class='text-justify'>You can download an application transfer it to your device and install it. Or if you want, you could go to your device's application market place and download the application. Aside from that, our applications are also available on the official
+            website of Mubosoft who also happenes to be our partner and helps us develop our systems and tehnology</p>
+        <p>All our application have gone through testing and are able to run on their dedicated devices.</p>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 ">
+            <div class='col mb-4'>
+                <div class='card glow-card bg-brownish' align="center">
+                    <a class="text-decoration-none" href="{% url 'flashcards:apk_download' %}">
+                        <br>
+                        <br>
+                        <i class="fab fa-google-play  h1  " style='color:maroon;'></i>
+                        <br>
+                        <br>
+                        <div class="card-body">
+                            <h5 align=center style='color:maroon;'> Android</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col mb-4">
+                <div class='card glow-card bg-brownish' align="center">
+                    <a class="text-decoration-none" href="{% url 'flashcards:apk_download' %}">
+                        <br>
+                        <br>
+                        <i class="fab fa-app-store-ios   h1  " style='color:maroon;'></i>
+                        <br>
+                        <br>
+                        <div class="card-body">
+                            <h5 align=center style='color:maroon;'> I-Phone & I-Pad</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class='col mb-4'>
+                <div class='card glow-card bg-brownish' align="center">
+                    <a class="text-decoration-none" href="{% url 'flashcards:apk_download' %}">
+                        <br>
+                        <br>
+                        <i class="fab fa-windows  h1  " style='color:maroon;'></i>
+                        <br>
+                        <br>
+                        <div class="card-body">
+                            <h5 align=center style='color:maroon;'> Windows PC</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col mb-4">
+                <div class='card glow-card bg-brownish' align="center">
+                    <a class="text-decoration-none" href="{% url 'flashcards:apk_download' %}">
+                        <br>
+                        <br>
+                        <i class="fab fa-apple  h1  " style='color:maroon;'></i>
+                        <br>
+                        <br>
+                        <div class="card-body">
+                            <h5 align=center style='color:maroon;'> MacBook</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class='mb-4 col'>
+                <div class='card glow-card bg-brownish' align="center">
+                    <a class="text-decoration-none" href="{% url 'flashcards:apk_download' %}">
+                        <br>
+                        <br>
+                        <i class="fab fa-linux  h1  " style='color:maroon;'></i>
+                        <br>
+                        <br>
+                        <div class="card-body">
+                            <h5 align=center style='color:maroon;'> Linux</h5>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+        <div class="padding" style="max-width: 400px;background-color:#EEEEEE">
+            <h6 class="text-danger">App Disclaimer:</h6>
+            <small class="text-muted">Most of our apps are still under development. Please, endeavour to check after sometime to discover if at all they have been developed completely. </small><br>
+            <small class="text-muted">For the time being you are encouraged to use the web since it has all the functions intended for all audiences</small>
+            <hr color="brown">
+            <br>
+        </div>
+
+        {% endblock %}

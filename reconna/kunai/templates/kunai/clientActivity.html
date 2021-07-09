@@ -1,0 +1,764 @@
+{% extends "base1.html" %} {% load static %} {% block sidepanel %}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+  Launch
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    Add rows here
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#exampleModal').on('show.bs.modal', event => {
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        // Use above variables to manipulate the DOM
+    });
+</script>
+
+<div id="preview-box" class="preview-box">
+    <div class="preview-head" style="display:flex">
+        <h6 class="text-center padding" style="flex:1"> <i class="fas fa-circle-notch  fa-spin  "></i> &nbsp </strong>Preview Box</strong></h6>
+    </div>
+    <div class="preview-body scroll-3">
+        <strong>Name:</strong><br>
+        <p id="preview-title"></p>
+        <hr>
+        <strong>Description:</strong><br>
+        <p id="preview-notes"></p>
+        <strong>Requested By: <small id="preview-client"></small></strong><br><hr>
+        <strong>Other Notes</strong><br>
+        <small id="preview-prop_1"></small><br>
+        <small id="preview-prop_2"></small><br>
+        <small id="preview-prop_3"></small><br>
+        <small id="preview-prop_4"></small><br>
+        <small id="preview-prop_5"></small><br>
+        <small id="preview-prop_6"></small>
+        <div align="center">
+            <img src="{% static 'images/ugconn.png' %}" width="50px" height="50px">
+        </div>
+
+    </div>
+    <div style="padding:10px;" align="center">
+        <button class="btn bg-greysan" style="width:150px;" onclick="hidePreview()"> Close Box </button>
+    </div>
+
+</div>
+
+<div>
+    {% if projects %}
+    <h4 style="font-family: lato-bold;" class="text-center text-brown">Client Activities</h4>
+    <br>
+    <div class="padding rounded" align="center">
+        <p>This section shows only 12 projects per category, you can use the search button above for deep search</p>
+        <div class="long-container scroll-3">
+            <a href="#InvestMoney">InvestMoney</a>
+            <a href="#Buildhouse">Buildhouse</a>
+            <a href="#BuyHouse">BuyHouse</a>
+            <a href="#BuyEquipment">BuyEquipment</a>
+            <a href="#BuyLand">BuyLand</a>
+            <a href="#DonateMoney">DonateMoney</a>
+            <a href="#PayFees">PayFees</a>
+            <a href="#OtherActivities">OtherActivities</a>
+        </div>
+
+        <form class="form-inline" style=" max-width: 450px;" method="get" action="">
+            <input type="text" class="form-control padding" style="width:300px;margin: 5px;" name="" id="" placeholder="project name">
+            <button class="btn bg-greysan padding" style="margin: 5px;">Search </button>
+        </form>
+    </div>
+    <br> {% if InvestMoney %}
+    <div>
+        <p style="font-family: lato" id="InvestMoney" class="text-center h6">InvestMoney</p>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in InvestMoney %}
+                <tr>
+                    <td style="min-width: 100px;;white-space: nowrap;overflow:hidden;">{{project.name}}</td>
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">
+                        <div style="display:flex;">
+                            <form id="invest-{{project.id}}">
+                                <input type="hidden" value="{{project.name}}" name="name">
+                                <input type="hidden" value="{{project.username.first_name}} {{project.username.last_name}}" name="username">
+                                <input type="hidden" value="Name of Venture: {{project.title}}" name="prop_1">
+                                <input type="hidden" value="Activity: {{project.activity}}" name="prop_2">
+                                <input type="hidden" value="" name="prop_3">
+                                <input type="hidden" value="{{project.notes}}" name="notes">
+                                <input type="hidden" value=" " name="prop_4">
+                                <input type="hidden" value=" " name="prop_5">
+                                <input type="hidden" value=" " name="prop_6">
+                                <button id="clickBtn1-{{project.id}}" style="width:150px;" class="btn bg-greysan" onclick="showAttributes('invest-{{project.id}}')">View More Info</button>
+                                <script>
+                                    document.getElementById("clickBtn1-{{project.id}}").addEventListener("click", function(event){
+                                        event.preventDefault();
+                                        //alert("Clicked {{project.name}}")
+                                    });
+                                </script>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br> {% endif %} {% if Buildhouse %}
+    <div>
+        <p style="font-family: lato" id="Buildhouse" class="text-center h6">Buildhouse</p>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Agent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in Buildhouse %}
+                <tr>
+                    <td style="min-width: 100px;;white-space: nowrap;overflow:hidden;">{{project.name}}</td>
+                    {% if project.status %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">Active</td>
+                    {% else %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">
+                        <div style="display:flex;">
+                            <a class="btn bg-greysan" href="#">Mark as active</a>&nbsp &nbsp
+                            <form id="build-{{project.id}}">
+                                <input type="hidden" value="{{project.name}}" name="name">
+                                <input type="hidden" value="{{project.username.first_name}} {{project.username.last_name}}" name="username">
+                                <input type="hidden" value="Preferred Location: {{project.reside}}" name="prop_1">
+                                <input type="hidden" value="Structure: {{project.structure}}" name="prop_2">
+                                <input type="hidden" value="Service Provider: {{project.serviceprovider}}" name="prop_3">
+                                <input type="hidden" value="{{project.notes}}" name="notes">
+                                <input type="hidden" value=" " name="prop_4">
+                                <input type="hidden" value=" " name="prop_5">
+                                <input type="hidden" value=" " name="prop_6">
+                                <button id="clickBtn-{{project.id}}" class="btn bg-greysan" onclick="showAttributes('build-{{project.id}}')">View More Info</button>
+                                <script>
+                                    document.getElementById("clickBtn-{{project.id}}").addEventListener("click", function(event){
+                                        event.preventDefault();
+                                        //alert("Clicked {{project.name}}")
+                                    });
+                                </script>
+                            </form>
+                        </div>
+                    </td>
+                    {% endif %} {% if project.assign_agent %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">{{project.assign_agent}}</td>
+                    {% else %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">
+                        <form id="buildh_form_{{project.id}}">
+                            <div style="display:flex">
+                                <input type="hidden" id="buildh_{{project.id}}" value="{{project.id}}">
+                                <input type="text" name="agent_buildh_{{project.id}}" list="users_list" id="agent_buildh_{{project.id}}" style="width: 200px;" class="form-control box-margin" placeholder="Name of Agent" aria-describedby="helpId" autocomplete="off">
+
+                            </div>
+                            <script>
+                                $("#agent_buildh_{{project.id}}").change(function(){
+                                    console.log("Into Ajax");
+                                    var agent_name = $(this).val();
+                                    var project_id = $("#buildh_{{project.id}}").val();
+                                    $.ajax(
+                                        {
+                                            url:"/kunai/ajax/assignAgent",
+                                            data: {
+                                                'agent_name':agent_name,
+                                                'project_id':project_id,
+                                                'type':'build_house',
+                                            },
+                                            //method:GET
+                                            dataType: 'json',
+                                            success: function(data){
+                                                alert(data.alert);
+                                                $("#buildh_form_{{project.id}}").replaceWith("<p class='text-brown' style='min-width:100px; padding:5px;'>"+agent_name+"</p>")
+                                            },
+                                            error: function(){
+                                                alert("We caught an error. Try re-assigning agent");
+
+                                            }
+                                        }
+                                    )
+                                     console.log("Finished processing" + agent_name)
+                                });
+                            </script>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+
+                </form>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br> {% endif %} {% if DonateMoney %}
+    <div>
+        <p style="font-family: lato" id="DonateMoney" class="text-center h6">DonateMoney</p>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Agent</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in DonateMoney %}
+                <tr>
+                    <td style="min-width: 100px;;white-space: nowrap;overflow:hidden;">{{project.name}}</td>
+                    {% if project.status %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">Active</td>
+                    {% else %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">
+                         <div style="display:flex;">
+                            <a class="btn bg-greysan" href="#">Mark as active</a>&nbsp &nbsp
+                            <form id="donate-{{project.id}}">
+                                <input type="hidden" value="{{project.name}}" name="name">
+                                <input type="hidden" value="{{project.username.first_name}} {{project.username.last_name}}" name="username">
+                                <input type="hidden" value="Organisation/Cause: {{project.orgname}}" name="prop_1">
+                                <input type="hidden" value="Location: {{project.reside}}" name="prop_2">
+                                <input type="hidden" value="Activity: {{project.activity}}" name="prop_3">
+                                <input type="hidden" value="{{project.notes}}" name="notes">
+                                <input type="hidden" value=" Contact: {{project.contact}}" name="prop_4">
+                                <input type="hidden" value=" " name="prop_5">
+                                <input type="hidden" value=" " name="prop_6">
+                                <button id="clickBtn2-{{project.id}}" class="btn bg-greysan" onclick="showAttributes('donate-{{project.id}}')">View More Info</button>
+                                <script>
+                                    document.getElementById("clickBtn2-{{project.id}}").addEventListener("click", function(event){
+                                        event.preventDefault();
+                                        //alert("Clicked {{project.name}}")
+                                    });
+                                </script>
+                            </form>
+                        </div>
+                    </td>
+                    {% endif %} {% if project.assign_agent %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">{{project.assign_agent}}</td>
+                    {% else %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">
+                        <form id="donate_form_{{project.id}}">
+                            <div style="display:flex">
+                                <input type="hidden" id="donate_{{project.id}}" value="{{project.id}}">
+                                <input type="text" name="agent_donate_{{project.id}}" list="users_list" id="agent_donate_{{project.id}}" style="width: 200px;" class="form-control box-margin" placeholder="Name of Agent" aria-describedby="helpId" autocomplete="off">
+
+                            </div>
+                            <script>
+                                $("#agent_donate_{{project.id}}").change(function(){
+                                    console.log("Into Ajax");
+                                    var agent_name = $(this).val();
+                                    var project_id = $("#donate_{{project.id}}").val();
+                                    $.ajax(
+                                        {
+                                            url:"/kunai/ajax/assignAgent",
+                                            data: {
+                                                'agent_name':agent_name,
+                                                'project_id':project_id,
+                                                'type':'donate_money',
+                                            },
+                                            //method:GET
+                                            dataType: 'json',
+                                            success: function(data){
+                                                alert(data.alert);
+                                                $("#donate_form_{{project.id}}").replaceWith("<p class='text-brown' style='min-width:100px; padding:5px;'>"+agent_name+"</p>")
+                                            },
+                                            error: function(){
+                                                alert("We caught an error. Try re-assigning agent");
+
+                                            }
+                                        }
+                                    )
+                                     console.log("Finished processing" + agent_name)
+                                });
+                            </script>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br> {% endif %} {% if BuyEquipment %}
+    <div>
+        <p style="font-family: lato" id="BuyEquipment" class="text-center h6">BuyEquipment</p>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Agent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in BuyEquipment %}
+                <tr>
+                    <td style="min-width: 100px;;white-space: nowrap;overflow:hidden;">{{project.name}}</td>
+                    {% if project.status %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">Active</td>
+                    {% else %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">
+                         <div style="display:flex;">
+                            <a class="btn bg-greysan" href="#">Mark as active</a>&nbsp &nbsp
+                            <form id="equip-{{project.id}}">
+                                <input type="hidden" value="{{project.name}}" name="name">
+                                <input type="hidden" value="{{project.username.first_name}} {{project.username.last_name}}" name="username">
+                                <input type="hidden" value="Item Name: {{project.item}}" name="prop_1">
+                                <input type="hidden" value="Quantity: {{project.quantity}}" name="prop_2">
+                                <input type="hidden" value="Quality: {{project.quality}}" name="prop_3">
+                                <input type="hidden" value="{{project.notes}}" name="notes">
+                                <input type="hidden" value="Receiver: {{project.receiver}} " name="prop_4">
+                                <input type="hidden" value="Contact: {{project.contact}}" name="prop_5">
+                                <input type="hidden" value="Location: {{project.reside}}" name="prop_6">
+                                <button id="clickBtn3-{{project.id}}" class="btn bg-greysan" onclick="showAttributes('equip-{{project.id}}')">View More Info</button>
+                                <script>
+                                    document.getElementById("clickBtn3-{{project.id}}").addEventListener("click", function(event){
+                                        event.preventDefault();
+                                        //alert("Clicked {{project.name}}")
+                                    });
+                                </script>
+                            </form>
+                        </div>
+                    </td>
+                    {% endif %} {% if project.assign_agent %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">{{project.assign_agent}}</td>
+                    {% else %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">
+                        <form id="equip_form_{{project.id}}">
+                            <div style="display:flex">
+                                <input type="hidden" id="equip_{{project.id}}" value="{{project.id}}">
+                                <input type="text" name="agent_equip_{{project.id}}" list="users_list" id="agent_equip_{{project.id}}" style="width: 200px;" class="form-control box-margin" placeholder="Name of Agent" aria-describedby="helpId" autocomplete="off">
+
+                            </div>
+                            <script>
+                                $("#agent_equip_{{project.id}}").change(function(){
+                                    console.log("Into Ajax");
+                                    var agent_name = $(this).val();
+                                    var project_id = $("#equip_{{project.id}}").val();
+                                    $.ajax(
+                                        {
+                                            url:"/kunai/ajax/assignAgent",
+                                            data: {
+                                                'agent_name':agent_name,
+                                                'project_id':project_id,
+                                                'type':'buy_equipment',
+                                            },
+                                            //method:GET
+                                            dataType: 'json',
+                                            success: function(data){
+                                                alert(data.alert);
+                                                $("#equip_form_{{project.id}}").replaceWith("<p class='text-brown' style='min-width:100px; padding:5px;'>"+agent_name+"</p>")
+                                            },
+                                            error: function(){
+                                                alert("We caught an error. Try re-assigning agent");
+
+                                            }
+                                        }
+                                    )
+                                     console.log("Finished processing" + agent_name)
+                                });
+                            </script>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br> {% endif %} {% if BuyHouse %}
+    <div>
+        <p style="font-family: lato" id="BuyHouse" class="text-center h6">BuyHouse</p>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Agent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in BuyHouse %}
+                <tr>
+                    <td style="min-width: 100px;;white-space: nowrap;overflow:hidden;">{{project.name}}</td>
+                    {% if project.status %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">Active</td>
+                    {% else %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">
+                         <div style="display:flex;">
+                            <a class="btn bg-greysan" href="#">Mark as active</a>&nbsp &nbsp
+                            <form id="buyhouse-{{project.id}}">
+                                <input type="hidden" value="{{project.name}}" name="name">
+                                <input type="hidden" value="{{project.username.first_name}} {{project.username.last_name}}" name="username">
+                                <input type="hidden" value="Preferred Location: {{project.reside}}" name="prop_1">
+                                <input type="hidden" value="Structure: {{project.structure}}" name="prop_2">
+                                <input type="hidden" value="Service Provider: {{project.serviceprovider}}" name="prop_3">
+                                <input type="hidden" value="{{project.notes}}" name="notes">
+                                <input type="hidden" value=" " name="prop_4">
+                                <input type="hidden" value=" " name="prop_5">
+                                <input type="hidden" value=" " name="prop_6">
+                                <button id="clickBtn4-{{project.id}}" class="btn bg-greysan" onclick="showAttributes('buyhouse-{{project.id}}')">View More Info</button>
+                                <script>
+                                    document.getElementById("clickBtn4-{{project.id}}").addEventListener("click", function(event){
+                                        event.preventDefault();
+                                        //alert("Clicked {{project.name}}")
+                                    });
+                                </script>
+                            </form>
+                        </div>
+                    </td>
+                    {% endif %} {% if project.assign_agent %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">{{project.assign_agent}}</td>
+                    {% else %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">
+                        <form id="buyh_form_{{project.id}}">
+                            <div style="display:flex">
+                                <input type="hidden" id="buyh_{{project.id}}" value="{{project.id}}">
+                                <input type="text" name="agent_buyh_{{project.id}}" list="users_list" id="agent_buyh_{{project.id}}" style="width: 200px;" class="form-control box-margin" placeholder="Name of Agent" aria-describedby="helpId" autocomplete="off">
+
+                            </div>
+                            <script>
+                                $("#agent_buyh_{{project.id}}").change(function(){
+                                    console.log("Into Ajax");
+                                    var agent_name = $(this).val();
+                                    var project_id = $("#buyh_{{project.id}}").val();
+                                    $.ajax(
+                                        {
+                                            url:"/kunai/ajax/assignAgent",
+                                            data: {
+                                                'agent_name':agent_name,
+                                                'project_id':project_id,
+                                                'type':'buy_house',
+                                            },
+                                            //method:GET
+                                            dataType: 'json',
+                                            success: function(data){
+                                                alert(data.alert);
+                                                $("#buyh_form_{{project.id}}").replaceWith("<p class='text-brown' style='min-width:100px; padding:5px;'>"+agent_name+"</p>")
+                                            },
+                                            error: function(){
+                                                alert("We caught an error. Try re-assigning agent");
+
+                                            }
+                                        }
+                                    )
+                                     console.log("Finished processing" + agent_name)
+                                });
+                            </script>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br> {% endif %} {% if BuyLand %}
+    <div>
+        <p style="font-family: lato" id="BuyLand" class="text-center h6">BuyLand</p>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Agent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in BuyLand %}
+                <tr>
+                    <td style="min-width: 100px;;white-space: nowrap;overflow:hidden;">{{project.name}}</td>
+                    {% if project.status %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">Active</td>
+                    {% else %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">
+                         <div style="display:flex;">
+                            <a class="btn bg-greysan" href="#">Mark as active</a>&nbsp &nbsp
+                            <form id="buyland-{{project.id}}">
+                                <input type="hidden" value="{{project.name}}" name="name">
+                                <input type="hidden" value="{{project.username.first_name}} {{project.username.last_name}}" name="username">
+                                <input type="hidden" value="Preferred Location: {{project.reside}}" name="prop_1">
+                                <input type="hidden" value="Structure: {{project.structure}}" name="prop_2">
+                                <input type="hidden" value=" " name="prop_3">
+                                <input type="hidden" value="{{project.notes}}" name="notes">
+                                <input type="hidden" value=" " name="prop_4">
+                                <input type="hidden" value=" " name="prop_5">
+                                <input type="hidden" value=" " name="prop_6">
+                                <button id="clickBtn5-{{project.id}}" class="btn bg-greysan" onclick="showAttributes('buyland-{{project.id}}')">View More Info</button>
+                                <script>
+                                    document.getElementById("clickBtn5-{{project.id}}").addEventListener("click", function(event){
+                                        event.preventDefault();
+                                        //alert("Clicked {{project.name}}")
+                                    });
+                                </script>
+                            </form>
+                        </div>
+                    </td>
+                    {% endif %} {% if project.assign_agent %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">{{project.assign_agent}}</td>
+                    {% else %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">
+                        <form id="buyl_form_{{project.id}}">
+                            <div style="display:flex">
+                                <input type="hidden" id="buyl_{{project.id}}" value="{{project.id}}">
+                                <input type="text" name="agent_buyl_{{project.id}}" list="users_list" id="agent_buyl_{{project.id}}" style="width: 200px;" class="form-control box-margin" placeholder="Name of Agent" aria-describedby="helpId" autocomplete="off">
+
+                            </div>
+                            <script>
+                                $("#agent_buyl_{{project.id}}").change(function(){
+                                    console.log("Into Ajax");
+                                    var agent_name = $(this).val();
+                                    var project_id = $("#buyl_{{project.id}}").val();
+                                    $.ajax(
+                                        {
+                                            url:"/kunai/ajax/assignAgent",
+                                            data: {
+                                                'agent_name':agent_name,
+                                                'project_id':project_id,
+                                                'type':'buy_land',
+                                            },
+                                            //method:GET
+                                            dataType: 'json',
+                                            success: function(data){
+                                                alert(data.alert);
+                                                $("#buyl_form_{{project.id}}").replaceWith("<p class='text-brown' style='min-width:100px; padding:5px;'>"+agent_name+"</p>")
+                                            },
+                                            error: function(){
+                                                alert("We caught an error. Try re-assigning agent");
+
+                                            }
+                                        }
+                                    )
+                                     console.log("Finished processing" + agent_name)
+                                });
+                            </script>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br> {% endif %} {% if PayFees %}
+    <div>
+        <p style="font-family: lato" id="PayFees" class="text-center h6">PayFees</p>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Agent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in PayFees %}
+                <tr>
+                    <td style="min-width: 100px;;white-space: nowrap;overflow:hidden;">{{project.name}}</td>
+                    {% if project.status %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">Active</td>
+                    {% else %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">
+                         <div style="display:flex;">
+                            <a class="btn bg-greysan" href="#">Mark as active</a>&nbsp &nbsp
+                            <form id="pay-{{project.id}}">
+                                <input type="hidden" value="{{project.name}}" name="name">
+                                <input type="hidden" value="{{project.username.first_name}} {{project.username.last_name}}" name="username">
+                                <input type="hidden" value="Activity: {{project.activity}}" name="prop_1">
+                                <input type="hidden" value="Receiver: {{project.receiver}}" name="prop_2">
+                                <input type="hidden" value="Receiver Contact: {{project.receiver_contact}} " name="prop_3">
+                                <input type="hidden" value="{{project.notes}}" name="notes">
+                                <input type="hidden" value="Amount: {{project.amount}}" name="prop_4">
+                                <input type="hidden" value="Pay Plan: {% if project.payplan %}
+                                Yes
+                                {% else %}
+                                No
+                                {% endif %} " name="prop_5">
+                                <input type="hidden" value=" " name="prop_6">
+                                <button id="clickBtn6-{{project.id}}" class="btn bg-greysan" onclick="showAttributes('pay-{{project.id}}')">View More Info</button>
+                                <script>
+                                    document.getElementById("clickBtn6-{{project.id}}").addEventListener("click", function(event){
+                                        event.preventDefault();
+                                        //alert("Clicked {{project.name}}")
+                                    });
+                                </script>
+                            </form>
+                        </div>
+                    </td>
+                    {% endif %} {% if project.assign_agent %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">{{project.assign_agent}}</td>
+                    {% else %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">
+                       <form id="pay_form_{{project.id}}">
+                            <div style="display:flex">
+                                <input type="hidden" id="pay_{{project.id}}" value="{{project.id}}">
+                                <input type="text" name="agent_pay_{{project.id}}" list="users_list" id="agent_pay_{{project.id}}" style="width: 200px;" class="form-control box-margin" placeholder="Name of Agent" aria-describedby="helpId" autocomplete="off">
+
+                            </div>
+                            <script>
+                                $("#agent_pay_{{project.id}}").change(function(){
+                                    console.log("Into Ajax");
+                                    var agent_name = $(this).val();
+                                    var project_id = $("#pay_{{project.id}}").val();
+                                    $.ajax(
+                                        {
+                                            url:"/kunai/ajax/assignAgent",
+                                            data: {
+                                                'agent_name':agent_name,
+                                                'project_id':project_id,
+                                                'type':'pay_fees',
+                                            },
+                                            //method:GET
+                                            dataType: 'json',
+                                            success: function(data){
+                                                alert(data.alert);
+                                                $("#pay_form_{{project.id}}").replaceWith("<p class='text-brown' style='min-width:100px; padding:5px;'>"+agent_name+"</p>")
+                                            },
+                                            error: function(){
+                                                alert("We caught an error. Try re-assigning agent");
+
+                                            }
+                                        }
+                                    )
+                                     console.log("Finished processing" + agent_name)
+                                });
+                            </script>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br> {% endif %} {% if OtherActivities %}
+    <div>
+        <p style="font-family: lato" id="OtherActivities" class="text-center h6">OtherActivities</p>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Agent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in OtherActivities %}
+                <tr>
+                    <td style="min-width: 100px;;white-space: nowrap;overflow:hidden;">{{project.name}}</td>
+                    {% if project.status %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">Active</td>
+                    {% else %}
+                    <td style="min-width: 100px;white-space: nowrap;overflow:hidden;">
+                         <div style="display:flex;">
+                            <a class="btn bg-greysan" href="#">Mark as active</a>&nbsp &nbsp
+                            <form id="others-{{project.id}}">
+                                <input type="hidden" value="{{project.name}}" name="name">
+                                <input type="hidden" value="{{project.username.first_name}} {{project.username.last_name}}" name="username">
+                                <input type="hidden" value="Activity: {{project.activity}}" name="prop_1">
+                                <input type="hidden" value="" name="prop_2">
+                                <input type="hidden" value="" name="prop_3">
+                                <input type="hidden" value="{{project.notes}}" name="notes">
+                                <input type="hidden" value=" " name="prop_4">
+                                <input type="hidden" value=" " name="prop_5">
+                                <input type="hidden" value=" " name="prop_6">
+                                <button id="clickBtn7-{{project.id}}" class="btn bg-greysan" onclick="showAttributes('others-{{project.id}}')">View More Info</button>
+                                <script>
+                                    document.getElementById("clickBtn7-{{project.id}}").addEventListener("click", function(event){
+                                        event.preventDefault();
+                                        //alert("Clicked {{project.name}}")
+                                    });
+                                </script>
+                            </form>
+                        </div>
+                    </td>
+                    {% endif %} {% if project.assign_agent %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">{{project.assign_agent}}</td>
+                    {% else %}
+                    <td style="min-width: 200px;white-space: nowrap;overflow:hidden;">
+                        <form id="other_form_{{project.id}}">
+                            <div style="display:flex">
+                                <input type="hidden" id="other_{{project.id}}" value="{{project.id}}">
+                                <input type="text" name="agent_other_{{project.id}}" list="users_list" id="agent_other_{{project.id}}" style="width: 200px;" class="form-control box-margin" placeholder="Name of Agent" aria-describedby="helpId" autocomplete="off">
+
+                            </div>
+                            <script>
+                                $("#agent_other_{{project.id}}").change(function(){
+                                    console.log("Into Ajax");
+                                    var agent_name = $(this).val();
+                                    var project_id = $("#other_{{project.id}}").val();
+                                    $.ajax(
+                                        {
+                                            url:"/kunai/ajax/assignAgent",
+                                            data: {
+                                                'agent_name':agent_name,
+                                                'project_id':project_id,
+                                                'type':'other',
+                                            },
+                                            //method:GET
+                                            dataType: 'json',
+                                            success: function(data){
+                                                alert(data.alert);
+                                                $("#other_form_{{project.id}}").replaceWith("<p class='text-brown' style='min-width:100px; padding:5px;'>"+agent_name+"</p>")
+                                            },
+                                            error: function(){
+                                                alert("We caught an error. Try re-assigning agent");
+
+                                            }
+                                        }
+                                    )
+                                     console.log("Finished processing" + agent_name)
+                                });
+                            </script>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br> {% endif %} {% else %}
+    <div align="center">
+        <br><br>
+        <h4 style="font-family: lato">Nothing here yet</h4>
+        <p>Your clients activities appear here ...</p>
+        <br><br> {% load static %}
+        <lottie-player src="{% static 'assets/lotties/27486-empty-state-notifications.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 300px;" loop autoplay></lottie-player>
+    </div>
+    {% endif %}
+</div>
+<datalist id="users_list">
+    {% for user in users %}
+        <option value="{{user.first_name}} {{user.last_name}} ">{{user.username}}</option>
+    {% endfor %}
+</datalist>
+
+
+{% endblock sidepanel %}

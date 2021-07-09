@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UgCon</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='stylesheet' href={% static 'css/bootstrap.min.css' %} />
+    <link rel='stylesheet' href={% static 'css/all.min.css' %} />
+    <link rel='stylesheet' href={% static 'css/styler.css' %} />
+    <link rel='stylesheet' href={% static 'css/style1.css' %} />
+</head>
+
+<body class='bg-mg2'>
+    <div align=center>
+        <br>
+        <div class='form-out-max  bg-greysan padding rounded'>
+            <br>
+            <h3 class="text-center text-light">BUY HOUSE</h3>
+            <hr>
+            <form method='POST' class="form-max  bg-greysan padding rounded">
+                {% csrf_token %}
+                <label class="text-light">Project Name:</label>
+                <input class='form-control' type='text' placeholder='Name pf project' name='project_name' required>
+                <label class="text-light">Location:</label>
+                <input class='form-control' type='text' placeholder='eg. (Kalisizo, Kyotera)' name='org' required>
+                <label class="text-light">Structure:</label>
+                <SELECT class='form-control' NAME="type"> <OPTION VALUE= "Bungalow">Bungalow</OPTION> <OPTION SELECTED VALUE="2 levels"> 2 Levels</OPTION><OPTION VALUE="3 Levels">3 Levels </OPTION> <OPTION VALUE="Other">Others (Specify in Description) </OPTION> </SELECT>
+                <label class="text-light" align=top>Description:</label>
+                <textarea class="fprm-control" name='notes' placeholder='Describe your project briefly ... ' cols=50 rows=10 required></textarea>
+                <button class='btn bg-brownish'>Create Activity <i class="fa fa-plus" aria-hidden="true"></i></button>
+            </form>
+            <br>
+            <h4 class="text-center">BRIEFING</h4>
+            <p cass='text-justify'>This module enables you to buy a house remotely. We shall connect you to our agent who will help you to buy your house even when you are away. The pricing and the planning will all be done between you and the agent. However, we discourage
+                you from giving the money for the activity to the agent. All paymenst should be made through a link that we shall provide to you. This is for your own safety and security. Even though, our agents have been proved trustworthy, they are
+                human and if not monitored they could do the unexpected.</p>
+        </div>
+    </div>
+</body>
+
+</html>
