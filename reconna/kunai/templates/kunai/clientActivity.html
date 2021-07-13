@@ -1,40 +1,38 @@
 {% extends "base1.html" %} {% load static %} {% block sidepanel %}
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
-  Launch
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-                <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    Add rows here
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
+<!--The notes box-->
+<div id="note-box" class="note">
+    <div class="note-header padding">
+    <form id="note_form">
+        <small class="text-light">From <strong id="note_agent"></strong> to <strong id="note_client"></small> </text><br><br>
+        <input type="hidden" id="agentName" value="{{request.user.username}}" name="agentName">
+        <input type="hidden" id="clientname" value="" name="clientname">
+        <input type="text" class="form-control" required name="title" placeholder="note-topic ...">
+    </div>
+    <div class="note-body padding">
+        <div class="form-group">
+          <textarea class="form-control" name="body" required id="body" rows="4"></textarea>
         </div>
     </div>
+    <div class="note-bottom padding" align="right">
+        <button id="closeBtn" class="box-button" onclick="closeNote()">cancel</button>
+        <button id="submit_btn" class="box-button" onclick="submitAgentNote()">send</button>
+    </div>
+    <script>
+        document.getElementById("closeBtn").addEventListener("click", function(event){
+            event.preventDefault();
+            //alert("Clicked {{project.name}}")
+        });
+    </script>
+    <script>
+        document.getElementById("submit_btn").addEventListener("click", function(event){
+            event.preventDefault();
+            //alert("Clicked {{project.name}}")
+        });
+    </script>
+    </form>
 </div>
-
-<script>
-    $('#exampleModal').on('show.bs.modal', event => {
-        var button = $(event.relatedTarget);
-        var modal = $(this);
-        // Use above variables to manipulate the DOM
-    });
-</script>
+<!-- End of the Notice box-->
 
 <div id="preview-box" class="preview-box">
     <div class="preview-head" style="display:flex">
@@ -60,7 +58,7 @@
 
     </div>
     <div style="padding:10px;" align="center">
-        <button class="btn bg-greysan" style="width:150px;" onclick="hidePreview()"> Close Box </button>
+        <button class="box-button" style="width:150px;" onclick="hidePreview()"> Close </button>
     </div>
 
 </div>
@@ -122,6 +120,22 @@
                                 </script>
                             </form>
                         </div>
+                    </td>
+                    <td style="min-width: 100px;">
+                    <form id="investNote-{{project.id}}">
+                        <input type="hidden" name="agent_name" value="{{project.agent.username}}">
+                        <input type="hidden" name="client_name" value="{{project.username.username}}">
+                        <input type="hidden" name="client_names" value="{{project.username.first_name}} {{project.username.last_name}}">
+                        <button type="button" id="investBtn-{{project.id}}" class="btn bg-greysan" id="create_note" data-toggle="modal" data-target="#modelId" onclick="showNote('investNote-{{project.id}}')">
+                            Create Note
+                        </button>
+                        <script>
+                            document.getElementById("investBtn-{{project.id}}").addEventListener("click", function(event){
+                                event.preventDefault();
+                                //alert("Clicked {{project.name}}")
+                            });
+                        </script>
+                    <form>
                     </td>
                 </tr>
                 {% endfor %}

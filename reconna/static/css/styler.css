@@ -475,6 +475,42 @@ th {
     border-radius: 5px;
 }
 
+.animeBall {
+    animation-name: changeColors;
+    border: 1px solid whitesmoke;
+    border-radius: 3px;
+    padding-left: 5px;
+    padding-top: 2px;
+    padding-bottom: 1px;
+    padding-right: 5px;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes changeColors {
+    from {
+        color: #007bff;
+        border-color: #007bff;
+    }
+    25% {
+        color: red;
+        border-color: red;
+    }
+    50% {
+        color: maroon;
+        border-color: maroon;
+    }
+    75% {
+        color: brown;
+        border-color: brown;
+    }
+    to {
+        color: #eee;
+        border-color: #eee;
+    }
+}
+
 .scroll-3::-webkit-resizer {
     width: 20px;
     height: 20px;
@@ -594,6 +630,7 @@ datalist option {
     height: 94vh;
     transition: all 500ms ease;
     border-radius: 10px;
+    border: 2px white ridge;
     display: none;
 }
 
@@ -630,6 +667,42 @@ datalist option {
     overflow-x: scroll;
 }
 
+.note {
+    max-width: 400px;
+    background-color: rgb(17, 16, 16);
+    min-width: 250px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px 2px rgb(72, 11, 11);
+    position: fixed;
+    bottom: 20vh;
+    border-radius: 10px;
+    border: 2px white ridge;
+    right: 10px;
+    display: none;
+}
+
+.box-button {
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(39, 17, 17);
+    color: white;
+    border-radius: 10px;
+    border: 2px white ridge;
+    transition-duration: 400ms;
+    transition-timing-function: ease;
+}
+
+.box-button:hover {
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    color: rgb(39, 17, 17);
+    border-radius: 10px;
+    border: 2px white ridge;
+}
+
 .long-container a {
     padding: 10px;
     border-radius: 10px;
@@ -646,9 +719,22 @@ datalist option {
     text-decoration: none;
 }
 
+#note-head {
+    max-width: 350px;
+    position: fixed;
+    right: 5px;
+    top: 10px;
+    border-radius: 10px;
+    background-color: #eee;
+    z-index: 3
+}
+
 @media only screen and (max-width:550px) {
     .responsive-panel {
         display: none;
+    }
+    #note-head {
+        position: relative;
     }
 }
 

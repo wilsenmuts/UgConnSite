@@ -32,5 +32,7 @@ urlpatterns = [
     url(r'downloadable/file/apk', views.apk_download, name ='apk_download'),
     path("ShoNotes/", views.show_notes, name="show_notes"),
     #url(r'article/edit/(?P<article_id>[\d]+)', views.editdeck, name='editdeck'),
-    path('search/<str:src_id>', views.sought, name='sought')
+    path('search/<str:src_id>', views.sought, name='sought'),
+    path("justSeenNote/", views.client_seen, name="client_seen"),
+    path("justSendComment/", views.send_client_comment, name="send_client_comment"),
 ]

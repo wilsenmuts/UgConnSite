@@ -1,0 +1,41 @@
+<html lang='en'>
+{% load static %}
+<head>
+    <title> {{title}} </title>
+
+</head>
+<body style="background-color:blue">
+<br>
+<header class="text-brown text-center h6">{{subject}}</header>
+<hr color="brown">
+<p>Hello {{receiver}}, here is a message from Reconna's mailing system</p>
+<p>{{content|linebreaksbr}}</p>
+<br>
+<strong>Please avoid responding to notes by replying the email. Go to your account using the <a href="https://reconnaweb.com/flashcards/ShoNotes/" class="text-decoration-none">Reconna website</a> and either comment to react to this note or create  new comment so that the agent can respond in case of a new concern. </strong><br>
+<br>
+<small>
+A message from Reconna's:<br>
+{{sender}}<br>
+<img src="{% static 'images/ugconn.png' %}" width="80" height="80"><br>
+</small>
+<hr color="maroon">
+<small class='text-muted'>
+    Reconna is a company that helps you start any commercialized activity within Uganda, and also avails to you its online and offline tools to help you see success in your choice of activity until its self sustaining when you feel you can take full control. <br>
+    We came into existence to help people who are on a continuous search for capital and other resources; build their activities without worry of being onsite and ending up with no money to run the activity due to letting go of the potential sources of income so as to manage the activities while they are still young.<br>
+    With out expertise and experience, we hope to see you gunning your way to success<br>
+</small>
+
+
+
+
+
+ <script type="text/javascript" src="{% static 'js/fontawesome/all.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/popper/popper.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/glm-ajax.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/aos.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</body>
+</html>

@@ -10,21 +10,21 @@ class comment(models.Model):
     body = models.TextField()
     agent_status = models.BooleanField(default=False) #Has agent read the note
     client_status = models.BooleanField(default=False) #Has client read the note
-    timer = models.DateTimeField(auto_now_add=False)
+    timer = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.timer
+        return str(self.timer)
 
 
 class notes(models.Model):
-    agent = models.CharField(max_length=45)
+    agent = models.ForeignKey(User, related_name="project_agent", on_delete=models.SET_NULL, null=True)
     client = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
     title = models.CharField(max_length=45)
     body = models.TextField()
     agent_status = models.BooleanField(default=False) #Has agent read the note
     client_status = models.BooleanField(default=False) #Has client read the note
-    comments = models.ManyToManyField(comment)
-    timer = models.DateTimeField(auto_now_add=False)
+    comments = models.ManyToManyField(comment, blank=True)
+    timer = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
@@ -50,7 +50,7 @@ class youtube(models.Model):
     name = models.CharField(max_length=50, default="")
     describe = models.TextField(blank=True)
     url_channel = models.URLField()
-    timer = models.DateTimeField(auto_now_add=False)
+    timer = models.DateTimeField(auto_now_add=True)
 
 class meeting(models.Model):
     date = models.DateTimeField(auto_now_add=False)

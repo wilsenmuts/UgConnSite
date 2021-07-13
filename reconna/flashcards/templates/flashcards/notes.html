@@ -1,12 +1,81 @@
 {% extends "base.html" %} {% block sidepanel %}
-<div class="bg-white padding" style="height:96vh;">
+<div id="note-head" class="padding border ">
+    <small class="text-brown">Please, reply to a note by commenting on it. Do not refresh or reloaded the page before finishing commenting otherwise your note might disappear after being counted as seen by You. Each disappeared note is taken to the agent to view and reply before its forwarded back to you again. Disappearing notes is a technique used by Reconna to prevent anyone from eavesdropping the ideas shared between you and our agents.</small>
+</div>
+<div class="bg-white padding">
     <h4 style="font-family: lato-bold;" class="text-center text-brown">My Notes And Feed</h4>
+
+    {% if agent_notes %}
+        {% for note in agent_notes %}
+
+            <!--The set of cards-->
+            <div style="max-width: 800px;" align="center">
+                <div class="border border-dark shadow rounded" style="margin: 10px;max-width:600px" align="left">
+                    <div class="bg-greysan padding rounded-top"> <small style="color:wheat;">A note from <strong> {{note.agent|capfirst}} </strong> on {{note.timer}}</small> </div>
+                    <div class=" padding">
+                        <h5>{{note.title}}</h5><hr>
+                        <p>{{note.body|linebreaksbr}}</p>
+                    </div>
+                    <div id="accordianId-{{note.id}}" role="tablist" aria-multiselectable="true">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="section1HeaderId-{{note.id}}">
+                                <h6 class="mb-0">
+                                    <a data-toggle="collapse" class="text-brown text-decoration-none" data-parent="#accordianId-{{note.id}}" href="#section1ContentId-{{note.id}}" aria-expanded="true" aria-controls="section1ContentId-{{note.id}}" onclick="readClientNote('{{note.id}}')">
+                            Comments &nbsp {% if note.comments %}<small class="animeBall text-right">Check Comments</small>{% endif %}
+                            </a>
+                                </h6>
+                            </div>
+                            <div id="section1ContentId-{{note.id}}" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId-{{note.id}}">
+                                <div class="card-body scroll-3" style="overflow-y:scroll;height:55vh;background-color:#222" >
+                                    <div id="comment_sect_{{note.id}}">
+                                        {% for comment in note.comments.all %}
+                                            {% if request.user == comment.username %}
+                                            <div align="right">
+                                                <div class="padding bg-greysan" style="margin:10px;border-radius:10px;max-width:85%" align="left">
+                                                    <small style="color:wheat;">Reply by {{comment.username}} on {{comment.timer}}</small><br>
+                                                    <p style="font-size:.85em">{{comment.body}}</p>
+                                                </div>
+                                            </div>
+                                            {% else %}
+                                                <div align="left">
+                                                    <div class="padding bg-dark" style="margin:10px;border-radius:10px;max-width:85%" align="left">
+                                                        <small style="color:wheat;">Reply by {{comment.username}} on {{comment.timer}}</small><br>
+                                                        <p style="font-size:.85em;color:white;">{{comment.body}}</p>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <form style="box-shadow:0px 0px 0px 0px;" class=" rounded" style="max-width: 450px;">
+                                        <div class="form-group">
+                                        <textarea class="form-control" id="comment_{{note.id}}" rows="3"></textarea>
+                                        <div align="right">
+                                        <button id="btn_{{note.id}}" class="box-button" onclick="sendClientComment('{{note.id}}', 'comment_{{note.id}}', '{{request.user.username}}')">Submit Comment</button>
+                                        <script>
+                                            document.getElementById("btn_{{note.id}}").addEventListener("click", function(event){
+                                                event.preventDefault();
+                                                //alert("Clicked {{project.name}}")
+                                            });
+                                        </script>
+                                        </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End of card set-->
+            <br><br>
+        {% endfor %}
+    {% else %}
     <div align="center">
         <h4 style="font-family: lato">Nothing here yet</h4>
         <p>Your feed is away of sharing simple notes with your agent that he may have to check later in the day</p>
         <br><br> {% load static %}
         <lottie-player src="{% static 'assets/lotties/27486-empty-state-notifications.json' %}" background="#ffffff" speed="1" style=" max-width: 450px; height: 300px;" loop autoplay></lottie-player>
     </div>
-
+    {% endif %}
 
     {% endblock %}

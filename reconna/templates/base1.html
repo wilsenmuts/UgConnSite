@@ -35,7 +35,7 @@
             <a class="btn btn-light btn-block" style="font-family: rublik" href="{% url 'kunai:welcome'%}">Projects Admin</a>
             <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'kunai:pending_projects' %} ">Pending Activity</a>
             <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'kunai:show_client_activities' %} ">Client Activity</a>
-            <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'kunai:show_notes' %} ">Notes & Feed</a>
+            <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'kunai:show_notes' %} "> <small style="padding-top:5px;padding-bottom:5px;padding-left:7px;padding-right:7px" class="bg-greysan text-light rounded">{{unread_agent_notes}}</small> Notes & Feed</a>
             <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'flashcards:grievances'%} ">My Grievances</a> {% else %}
             <small><em>This functionality is intended for UgConn Workers only</em></small>
             <hr color="white "> {% endif %} {% if request.user.is_staff %}

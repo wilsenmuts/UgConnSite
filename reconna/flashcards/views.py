@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http  import HttpResponse, HttpResponseRedirect
+from django.http  import HttpResponse, HttpResponseRedirect, JsonResponse
 from .models import *
 from adminApp.models import *
+from kunai.models import *
 from .forms import *
 from itertools import chain
 from django.core.paginator import Paginator
@@ -46,8 +47,35 @@ def apps(request):
 
 @login_required(login_url="/")
 def show_notes(request):
-    context={}
+    agent_notes = notes.objects.filter(client=request.user, client_status=False).order_by("-timer")
+    context={"agent_notes":agent_notes}
     return render(request,"flashcards/notes.html", context)
+
+def client_seen(request):
+    id = request.GET.get('note_id')
+    note = get_object_or_404(notes,id=id)
+    note.client_status=True
+    note.save()
+    data ={"alert":"success"}
+    return JsonResponse(data)
+
+def send_client_comment(request):
+    note_id = request.GET.get('note_id')
+    body = request.GET.get('body')
+    username = request.GET.get('user')
+    user = get_object_or_404(User, username=username)
+    comment_to_save = comment(
+        body=body,
+        username=user
+    )
+    comment_to_save.save()
+    note = get_object_or_404(notes, id=note_id)
+    note.comments.add(comment_to_save)
+    note.agent_status=False
+    note.save()
+    data={"alert":'success'}
+    return JsonResponse(data)
+
 
 @login_required(login_url="/")
 def buyequipment(request):
@@ -397,3 +425,11 @@ def siteservices(request):
 @login_required(login_url="/")
 def sought(request, src_id):
     print(src_id)
+
+def unread_notes(request):
+    if request.user.is_authenticated:
+        total_unread= notes.objects.filter(client=request.user, client_status=False).count()
+        return {"unread_notes":total_unread}
+    else:
+        return {"unread_notes":"Anonymous Notes Null"}
+

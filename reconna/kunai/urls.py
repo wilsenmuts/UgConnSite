@@ -11,5 +11,8 @@ urlpatterns = [
     path("pending_detail/<str:id>", show_detail_about_pending, name="pending_detail"),
     path("ajax/assignAgent", assign_agent, name="asssign_agent"),
     path("showNotes/", show_notes, name="show_notes"),
-    path("showAgentClients/", show_client_activities, name="show_client_activities")
+    path("showAgentClients/", show_client_activities, name="show_client_activities"),
+    path("ajax34/submitAgentNote/", send_agent_note, name="send_agent_notes"),
+    path("justSendComment/", send_agent_comment, name="send_agent_comment"),
+    path("justSeenNote/", agent_seen, name="agent_seen")
 ]

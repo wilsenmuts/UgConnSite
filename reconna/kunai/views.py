@@ -1,12 +1,18 @@
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
+from .models import *
 from flashcards.models import *
 from django.contrib.auth.models import User
 from itertools import chain
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.conf import settings
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
+from django.template.loader import render_to_string, get_template
+
+from django.utils.html import strip_tags
 
 # Create your views here.
 def welcome(request):
@@ -119,7 +125,92 @@ def show_client_activities(request):
     context={"InvestMoney":InvestMoney, "Buildhouse":Buildhouse, "DonateMoney":DonateMoney, "BuyEquipment":BuyEquipment, "BuyHouse":BuyHouse_list, "BuyLand":BuyLand, "PayFees":PayFess, "OtherActivities":OtherActivities, "projects":projects, "users":users}
     return render(request, "kunai/clientActivity.html", context)
 
+def send_agent_note(request):
+    agent = request.GET.get("agent_name")
+    client = request.GET.get("client_name")
+    title = request.GET.get("title")
+    body = request.GET.get("body")
+    agent_obj = get_object_or_404(User, username=agent)
+    client_obj = get_object_or_404(User, username=client)
+    to = "wilsonmutebi41@gmail.com"
+
+    ###############################
+    #ctx = {
+    #    'user': "Ajay"
+    #}
+    #message = get_template('mail.html').render(ctx)
+    #msg = EmailMessage(
+    #    'Subject',
+    #    message,
+    #    'from@example.com',
+    #    ['to@example.com'],
+    #)
+    #msg.content_subtype = "html"  # Main content is now text/html
+    #msg.send()
+
+    #Creating notification email
+    mail_data={"title":"Note from Reconna Agent","subject":title,"content":body, "sender":agent, "receiver":client}
+    message = get_template('kunai/note_mail.html').render(mail_data)
+    html_content = render_to_string("kunai/note_mail.html", )
+    text_content = strip_tags(html_content)
+    email = EmailMultiAlternatives(
+        "Note From Reconna Agent:",
+        html_content,
+        settings.EMAIL_HOST_USER,
+        [to]
+    )
+    email.attach_alternative(text_content, "text/html")
+
+    #Saving to the database
+    new_note= notes(
+        agent=agent_obj,
+        client=client_obj,
+        title =title,
+        body = body,
+        agent_status = 1,
+        client_status =0,
+    )
+    new_note.save()
+    data={'alert':"The note was sent successfully"}
+    return JsonResponse(data)
+
 @login_required(login_url="/")
 def show_notes(request):
-    context={}
+    client_notes = notes.objects.filter(agent=request.user, agent_status=False).order_by("-timer")
+    context={"client_notes":client_notes}
     return render(request,"kunai/notes.html", context)
+
+def agent_seen(request):
+    id = request.GET.get('note_id')
+    note = get_object_or_404(notes,id=id)
+    note.agent_status=True
+    note.save()
+    data ={"alert":"success"}
+    return JsonResponse(data)
+
+
+
+def send_agent_comment(request):
+    note_id = request.GET.get('note_id')
+    body = request.GET.get('body')
+    username = request.GET.get('user')
+    user = get_object_or_404(User, username=username)
+    comment_to_save = comment(
+        body=body,
+        username=user
+    )
+    comment_to_save.save()
+    note = get_object_or_404(notes, id=note_id)
+    note.comments.add(comment_to_save)
+    note.client_status=False
+    note.save()
+    data={"alert":'success'}
+    return JsonResponse(data)
+
+
+def unread_agent_notes(request):
+    if request.user.is_authenticated:
+        total_unread= notes.objects.filter(agent=request.user, agent_status=False).count()
+        return {"unread_agent_notes":total_unread}
+    else:
+        return {"unread_agent_notes":"0"}

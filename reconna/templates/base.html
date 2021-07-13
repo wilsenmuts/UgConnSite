@@ -33,7 +33,7 @@
             <hr color="white">
             <a class="btn btn-light btn-block" style="font-family: rublik" href="{% url 'flashcards:myactivity'%}">Project Manager</a>
             <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'flashcards:activity' %} ">Create Activity</a>
-            <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'flashcards:show_notes' %} ">Notes & Feed</a>
+            <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'flashcards:show_notes' %} "> <small style="padding-top:5px;padding-bottom:5px;padding-left:7px;padding-right:7px" class="bg-greysan text-light rounded">{{unread_notes}}</small> Notes & Feed</a>
             <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'flashcards:ugbus' %} ">UgBusiness</a>
             <a class="btn btn-light btn-block " style="font-family: rublik" href="{% url 'flashcards:grievances'%} ">My Grievances</a> {% else %}
             <p><em>Please sign-in to access full functionality</em></p>
